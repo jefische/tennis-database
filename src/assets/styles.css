@@ -1,1 +1,33 @@
-/* Global styles */
+@import "tailwindcss";
+
+#root {
+	height: 100%;
+}
+
+/*********** backgrounds **************/
+.hero-background {
+	background-image: url("./images/bgs/big3_v2.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 70vh;
+}
+
+.my-items {
+	height: calc(100% - 64px);
+	position: relative;
+}
+
+.item-container {
+	height: 100%;
+	overflow: auto;
+}
+
+.iframe-container {
+	max-width: 370px;
+}
+
+.iframe-container .myHover:hover {
+	background-color: transparent;
+	box-shadow: inset 0 0 0 50vw rgba(50, 54, 68, 0.4);
+	cursor: pointer;
+}
