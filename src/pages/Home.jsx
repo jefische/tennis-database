@@ -1,8 +1,38 @@
 import Navbar from "../components/Navbar";
 import VideoCard from "../components/VideoCard";
 import { Videos } from "../assets/data/videos";
+import Modal from "react-modal";
+import { useState } from "react";
+
+const customStyles = {
+	content: {
+		top: "50%",
+		left: "50%",
+		right: "auto",
+		bottom: "auto",
+		marginRight: "-50%",
+		transform: "translate(-50%, -50%)",
+	},
+};
 
 export function Home() {
+	const modalHandler = function () {
+		console.log("hello world");
+	};
+	const [modalIsOpen, setIsOpen] = useState(false);
+
+	function openModal() {
+		setIsOpen(true);
+	}
+
+	function afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		subtitle.style.color = "#f00";
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+	}
 	return (
 		<>
 			<Navbar />
@@ -23,7 +53,7 @@ export function Home() {
 						<div className="h-100">Filters</div>
 					</aside>
 					<main>
-						<div className="item-container">
+						<div className="item-container ps-[50px]">
 							<div className="hero-background-x">
 								{/* <img
 								src="/assets/images/bgs/big3_v3.jpg"
@@ -32,10 +62,42 @@ export function Home() {
 								height="300px"
 								className="mx-auto pt-[100px] "
 							/> */}
-								<h1 className="text-5xl py-[50px] ps-[50px]">Welcome to the Match Database</h1>
+								<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
 							</div>
 
-							<div className="flex flex-wrap gap-[20px] px-[50px]">
+							<div>
+								<button onClick={openModal} style={{ border: "1px solid", padding: "5px" }}>
+									Open Modal
+								</button>
+								<Modal
+									isOpen={modalIsOpen}
+									onAfterOpen={afterOpenModal}
+									onRequestClose={closeModal}
+									style={customStyles}
+									contentLabel="Example Modal"
+								>
+									<h2>Hello</h2>
+									<button onClick={closeModal}>close</button>
+									<div>I am a modal</div>
+									<form>
+										<input />
+										<button>tab navigation</button>
+										<button>stays</button>
+										<button>inside</button>
+										<button>the modal</button>
+									</form>
+								</Modal>
+							</div>
+
+							<div
+								className="mt-[50px] text-3xl inline-flex text-center myHover"
+								style={{ height: "50px" }}
+								onClick={modalHandler}
+							>
+								Federer vs Nadal
+							</div>
+
+							<div className="flex flex-wrap gap-[20px]">
 								{/* <iframe
 									width="390"
 									height="235"
@@ -57,7 +119,7 @@ export function Home() {
 									allowfullscreen
 								></iframe> */}
 								{Videos.map((x) => {
-									return <VideoCard id={x.youtube_id} title={x.title} />;
+									return <VideoCard id={x.youtube_id} title={x.title} key={x.youtube_id} />;
 								})}
 							</div>
 						</div>
