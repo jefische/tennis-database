@@ -3,7 +3,7 @@ import VideoCard from "../components/VideoCard";
 import { Videos } from "../assets/data/videos";
 
 // import Modal from "react-modal";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -36,23 +36,15 @@ export function Home() {
 								width="100%"
 								height="300px"
 								className="mx-auto pt-[100px] "
-							/> */}
+								/> */}
 								<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
 							</div>
-
-							<div
-								className="mt-[50px] text-3xl inline-flex text-center myHover"
-								style={{ height: "50px" }}
-							>
-								Federer vs Nadal
-							</div>
-
 							<div className="flex flex-wrap gap-[25px]">
 								{Videos.map((x) => {
 									return (
-										<>
-											<VideoCard id={x.youtube_id} key={x.myID} title={x.title} />
-										</>
+										<Fragment key={x.myID}>
+											<VideoCard id={x.youtube_id} title={x.title} />
+										</Fragment>
 									);
 								})}
 							</div>

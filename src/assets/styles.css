@@ -51,6 +51,7 @@ body,
 	margin-bottom: 40px;
 	max-width: 370px;
 	min-width: 350px;
+	transition: all 0.5s ease-in-out;
 }
 
 .card-cover:hover {

@@ -8,7 +8,7 @@ export default function VideoCard({ id, title, myKey }) {
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 	return (
-		<Fragment key={myKey}>
+		<Fragment>
 			<div className="card-cover">
 				<div
 					className="header-background"
