@@ -2,10 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
-import Modal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// Modal.setAppElement("#root");
 
 const App = () => {
 	return (

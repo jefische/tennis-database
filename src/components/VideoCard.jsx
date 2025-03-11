@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Fragment, useState } from "react";
 
-export default function VideoCard({ id, title, myKey }) {
+export default function VideoCard({ id, title }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => setIsOpen(true);
@@ -28,7 +28,7 @@ export default function VideoCard({ id, title, myKey }) {
 				dialogClassName="modal-90w"
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>Modal Heading</Modal.Title>
+					<Modal.Title>{title}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body style={{ height: "80vh" }} className="flex flex-col 2xl:flex-row gap-[20px]">
 					<div className="col" style={{ maxWidth: "1280px" }}>
@@ -36,7 +36,7 @@ export default function VideoCard({ id, title, myKey }) {
 							height="100%"
 							width="100%"
 							src={`https://www.youtube.com/embed/${id}`}
-							title="Jannik Sinner v Alexander Zverev Full Match | Australian Open 2025 Final"
+							title={title}
 							frameBorder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							referrerPolicy="strict-origin-when-cross-origin"

@@ -2,17 +2,14 @@ import Navbar from "../components/Navbar";
 import VideoCard from "../components/VideoCard";
 import { Videos } from "../assets/data/videos";
 
-// import Modal from "react-modal";
-import { Fragment, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Fragment } from "react";
 
 export function Home() {
 	return (
 		<>
 			<Navbar />
 
-			<div className="my-items">
+			<div className="body-container">
 				<section className="flex" style={{ height: "100%" }}>
 					<aside
 						className="pt-[15px]"
@@ -28,8 +25,8 @@ export function Home() {
 						<div className="h-100">Filters</div>
 					</aside>
 					<main>
-						<div className="item-container ps-[50px]">
-							<div className="hero-background-x">
+						<div className="content-container ps-[50px]">
+							<div className="hero-background">
 								{/* <img
 								src="/assets/images/bgs/big3_v3.jpg"
 								alt="hero image"

@@ -10,43 +10,32 @@ body,
 
 /*********** backgrounds **************/
 .hero-background {
-	background-image: url("./images/bgs/big3_v2.jpg");
-	background-position: center;
-	background-size: cover;
-	height: 70vh;
+	/* background-image: url("./images/bgs/big3_v2.jpg"); */
+	/* background-position: center; */
+	/* background-size: cover; */
+	/* height: 70vh; */
 }
 
-.my-items {
+.body-container {
+	/* Setting height to 100% here won't allow the content to be fully visible when scrolling to the bottom of the page.
+	   I believe this is because overflow is set to hidden on the <html> tag which permanently fixes the height of the display
+	   to a pixel value. Then setting the body container to the same height (100%) means that the body should take up the
+	   full screen including the navbar. Then with overflow auto/scroll on the content container this seems to cause the body
+	   container to cut off the bottom of the element. I believe another way to look at this is, once scrolling the content
+	   container to the bottom, if the height is (100% - the navbar height), then the full element will fit in the viewport WITH the navbar.
+	   If the height is 100% (full viewport size), then both the content container and navbar cannot fully be visible on the screen with a fixed html height.*/
 	height: calc(100% - 64px);
-	position: relative;
+	/* Not currently using any absolute positioning, so I don't believe we need position relative here */
+	/* position: relative; */
 }
 
-.item-container {
+.content-container {
 	height: 100%;
 	overflow: auto;
 }
 
-.iframe-container {
-	max-width: 370px;
-}
-
-.iframe-container .myHover:hover {
-	background-color: transparent;
-	box-shadow: inset 0 0 0 50vw rgba(50, 54, 68, 0.4);
-	cursor: pointer;
-}
-
-.myHover:hover {
-	background-color: #ccc;
-	cursor: pointer;
-}
-
-.modal-90w {
-	max-width: none !important;
-	width: 90% !important;
-}
-
 .card-cover {
+	cursor: pointer;
 	height: 235px;
 	margin-bottom: 40px;
 	max-width: 370px;
@@ -60,17 +49,13 @@ body,
 }
 
 .header-background {
-	/* background-color: #ccc; */
-	/* background-image: url("https://www.youtube.com/embed/9_3APf0X_-8.jpg"); */
-	/* background-image: url("http://img.youtube.com/vi/9_3APf0X_-8/maxresdefault.jpg"); */
-	/* background-image: url("http://img.youtube.com/vi/9_3APf0X_-8/0.jpg"); */
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
-	cursor: pointer;
 	height: 235px;
 }
 
-.header-background:hover {
-	background-color: grey;
+.modal-90w {
+	max-width: none !important;
+	width: 90% !important;
 }
