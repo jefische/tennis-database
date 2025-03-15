@@ -17,7 +17,7 @@ export function Home() {
 				<section className="flex" style={{ height: "100%" }}>
 					<Sidebar setVideos={setVideos} />
 					<main>
-						<div className="content-container ps-[50px]">
+						<div className="content-container px-[50px]">
 							<div className="hero-background">
 								{/* <img
 								src="/assets/images/bgs/big3_v3.jpg"
