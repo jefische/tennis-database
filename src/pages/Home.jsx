@@ -1,29 +1,21 @@
 import Navbar from "../components/Navbar";
 import VideoCard from "../components/VideoCard";
+import Sidebar from "../components/Sidebar";
 import { Videos } from "../assets/data/videos";
+import { useState } from "react";
 
 import { Fragment } from "react";
 
 export function Home() {
+	const [ytVideos, setVideos] = useState(Videos);
+
 	return (
 		<>
 			<Navbar />
 
 			<div className="body-container">
 				<section className="flex" style={{ height: "100%" }}>
-					<aside
-						className="pt-[15px]"
-						style={{
-							width: "245px",
-							maxWidth: "245px",
-							minWidth: "245px",
-							borderRight: "1px solid",
-							height: "100%",
-						}}
-					>
-						Sidebar
-						<div className="h-100">Filters</div>
-					</aside>
+					<Sidebar setVideos={setVideos} />
 					<main>
 						<div className="content-container ps-[50px]">
 							<div className="hero-background">
@@ -36,8 +28,8 @@ export function Home() {
 								/> */}
 								<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
 							</div>
-							<div className="flex flex-wrap gap-[25px]">
-								{Videos.map((x) => {
+							<div className="flex flex-wrap gap-[25px] mb-[50px]">
+								{ytVideos.map((x) => {
 									return (
 										<Fragment key={x.myID}>
 											<VideoCard id={x.youtube_id} title={x.title} />

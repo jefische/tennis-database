@@ -8,6 +8,43 @@ body,
 	height: 100%;
 }
 
+/*********** sidebar filters **************/
+ul.filter {
+	padding: 10px 0;
+
+	font-weight: 700;
+	li {
+		font-weight: 400;
+		padding: 5px;
+		label {
+			padding-left: 10px;
+		}
+	}
+}
+
+.accordion-rjs {
+	max-width: 180px;
+	min-width: 180px;
+	padding-top: 10px;
+
+	.accordion-item-rjs {
+		.accordion-title-rjs {
+			border-top: 1px solid;
+			cursor: pointer;
+			display: flex;
+			font-weight: 700;
+			justify-content: space-between;
+			padding-top: 10px;
+		}
+		.accordion-title-rjs:hover h6 {
+			text-decoration: underline;
+		}
+		.accordion-title-rjs:active h6,
+		.accordion-title-rjs:active div.expand {
+			scale: 0.95;
+		}
+	}
+}
 /*********** backgrounds **************/
 .hero-background {
 	/* background-image: url("./images/bgs/big3_v2.jpg"); */
