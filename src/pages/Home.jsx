@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import VideoCard from "../components/VideoCard";
+import AddVideo from "../components/AddVideo";
 import Sidebar from "../components/Sidebar";
 import { Videos } from "../assets/data/videos";
 import { useState } from "react";
@@ -36,6 +37,7 @@ export function Home() {
 										</Fragment>
 									);
 								})}
+								<AddVideo />
 							</div>
 						</div>
 					</main>
