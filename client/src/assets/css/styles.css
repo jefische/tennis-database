@@ -109,3 +109,26 @@ ul.filter {
 	max-width: none !important;
 	width: 90% !important;
 }
+
+.modal-50w {
+	max-width: none !important;
+	width: 50% !important;
+}
+
+form.add-video {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 20px;
+
+	div {
+		display: flex;
+		gap: 20px;
+		justify-content: end;
+		width: 100%;
+
+		input {
+			flex-basis: 80%;
+		}
+	}
+}
