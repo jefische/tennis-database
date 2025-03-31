@@ -5,6 +5,9 @@ const path = require("path");
 require("dotenv").config();
 let bodyParser = require("body-parser");
 
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGO_URI);
 // Mount bodyParse middleware for POST requests
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -15,11 +18,45 @@ app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "..", "client/src/dist/index.html"));
 });
 
-app.post("/data/videos", async (req, res) => {
-	var user = req.body;
-	console.log("posting video data....");
+// Define URL schema for MongoDB
+const Schema = mongoose.Schema;
 
-	res.json({ title: user.tournament, year: user.year });
+const VideoSchema = new Schema({
+	tournament: { type: String, required: true },
+	year: { type: Number, required: true },
+	round: String,
+	youtube_id: { type: String, required: true },
+	player1: { type: String, required: true },
+	player2: { type: String, required: true },
+	title: { type: String, required: true },
+});
+
+// Create a Model
+let TVideo = mongoose.model("Tennis Videos", VideoSchema);
+
+app.post("/data/videos", async (req, res) => {
+	console.log("posting video data....");
+	var videoEntry = req.body;
+	const userEntry = new TVideo({
+		tournament: videoEntry.tournament,
+		year: videoEntry.year,
+		round: videoEntry.round,
+		youtube_id: videoEntry.youtubeid,
+		player1: videoEntry.player1,
+		player2: videoEntry.player2,
+		title: videoEntry.title,
+	});
+	await userEntry.save();
+
+	res.json({
+		tournament: videoEntry.tournament,
+		year: videoEntry.year,
+		round: videoEntry.round,
+		youtubeId: videoEntry.youtubeid,
+		player1: videoEntry.player1,
+		player2: videoEntry.player2,
+		title: videoEntry.title,
+	});
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {

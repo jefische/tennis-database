@@ -61,33 +61,75 @@ export default function AddVideo() {
 							method="post"
 							// onSubmit={saveVideo}
 						>
-							<div className=" ">
+							<div>
 								<label htmlFor="tournament">Tournament</label>
-								<input type="text" name="tournament" className="" />
+								<select className="form-select" name="tournament" id="tournament" required>
+									<option value="empty">Choose...</option>
+									<option value="AO">Australian Open</option>
+									<option value="FO">French Open</option>
+									<option value="Wimby">Wimbledon</option>
+									<option value="USO">US Open</option>
+								</select>
 							</div>
-							<div className="">
+							<div>
 								<label htmlFor="year">Year</label>
-								<input type="text" name="year" className="" />
+								<input
+									className="form-control"
+									type="number"
+									min="1970"
+									max="2025"
+									step="1"
+									placeholder="2000"
+									name="year"
+									required
+								/>
 							</div>
-							<div className=" ">
+							<div>
 								<label htmlFor="round">Round</label>
-								<input type="text" name="round" />
+								<select className="form-select" name="round" id="round" required>
+									<option value="empty">Choose...</option>
+									<option value="1">1st</option>
+									<option value="2">2nd</option>
+									<option value="3">3rd</option>
+									<option value="4">4th</option>
+									<option value="quarters">Quarterfinals</option>
+									<option value="semis">Semifinals</option>
+									<option value="finals">Finals</option>
+								</select>
 							</div>
-							<div className="">
+							<div>
 								<label htmlFor="youtubeid">Youtube ID</label>
-								<input type="text" name="youtubeid" />
+								<input
+									className="form-control"
+									type="text"
+									name="youtubeid"
+									required
+									placeholder="e.g. https://www.youtube.com/embed/{id}"
+								/>
 							</div>
-							<div className=" ">
+							<div>
 								<label htmlFor="player1">Player 1</label>
-								<input type="text" name="player1" />
+								<input
+									className="form-control"
+									type="text"
+									name="player1"
+									required
+									placeholder="e.g. Carlos Alcaraz"
+								/>
 							</div>
-							<div className=" ">
+							<div>
 								<label htmlFor="player2">Player 2</label>
-								<input type="text" name="player2" />
+								<input
+									className="form-control"
+									type="text"
+									name="player2"
+									required
+									placeholder="e.g. Tommy Paul"
+								/>
 							</div>
-							<div className=" ">
+							<div>
 								<label htmlFor="title">Title</label>
-								<input type="text" name="title" />
+								<input className="form-control" type="text" name="title" required />
 							</div>
 						</form>
 					</div>

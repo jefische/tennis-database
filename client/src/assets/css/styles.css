@@ -8,7 +8,8 @@ body,
 	height: 100%;
 }
 
-input {
+input,
+select {
 	border: 1px solid;
 	border-radius: 5px;
 	padding-bottom: 5px;
@@ -127,7 +128,8 @@ form.add-video {
 		justify-content: end;
 		width: 100%;
 
-		input {
+		input,
+		select {
 			flex-basis: 80%;
 		}
 	}
