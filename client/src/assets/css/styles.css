@@ -123,14 +123,22 @@ form.add-video {
 	gap: 20px;
 
 	div {
-		display: flex;
+		/* display: flex;
 		gap: 20px;
-		justify-content: end;
+		justify-content: end; */
 		width: 100%;
 
+		label {
+			font-weight: 700;
+			margin-bottom: 5px;
+			padding-left: 10px;
+		}
 		input,
 		select {
 			flex-basis: 80%;
+		}
+		div.invalid-feedback {
+			padding-left: 10px;
 		}
 	}
 }

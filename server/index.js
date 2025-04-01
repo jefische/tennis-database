@@ -34,6 +34,17 @@ const VideoSchema = new Schema({
 // Create a Model
 let TVideo = mongoose.model("Tennis Videos", VideoSchema);
 
+app.get("/api/items", async (req, res) => {
+	try {
+		const items = await TVideo.find({});
+		console.log("loading videos...");
+		console.log(items);
+		res.json(items);
+	} catch (error) {
+		res.status(500).json({ message: "Error fetching data", error });
+	}
+});
+
 app.post("/data/videos", async (req, res) => {
 	console.log("posting video data....");
 	var videoEntry = req.body;
