@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-require("dotenv").config();
+require("dotenv").config(); // Load .env file variables into process.env
 let bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
@@ -38,7 +38,6 @@ app.get("/api/items", async (req, res) => {
 	try {
 		const items = await TVideo.find({});
 		console.log("loading videos...");
-		console.log(items);
 		res.json(items);
 	} catch (error) {
 		res.status(500).json({ message: "Error fetching data", error });
@@ -59,15 +58,16 @@ app.post("/data/videos", async (req, res) => {
 	});
 	await userEntry.save();
 
-	res.json({
-		tournament: videoEntry.tournament,
-		year: videoEntry.year,
-		round: videoEntry.round,
-		youtubeId: videoEntry.youtubeid,
-		player1: videoEntry.player1,
-		player2: videoEntry.player2,
-		title: videoEntry.title,
-	});
+	res.redirect("/");
+	// res.json({
+	// 	tournament: videoEntry.tournament,
+	// 	year: videoEntry.year,
+	// 	round: videoEntry.round,
+	// 	youtubeId: videoEntry.youtubeid,
+	// 	player1: videoEntry.player1,
+	// 	player2: videoEntry.player2,
+	// 	title: videoEntry.title,
+	// });
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {

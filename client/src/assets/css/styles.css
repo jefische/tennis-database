@@ -106,14 +106,19 @@ ul.filter {
 	transform: scale(1.1);
 }
 
-.modal-90w {
+.modal-30w {
 	max-width: none !important;
-	width: 90% !important;
+	width: 30% !important;
 }
 
 .modal-50w {
 	max-width: none !important;
 	width: 50% !important;
+}
+
+.modal-90w {
+	max-width: none !important;
+	width: 90% !important;
 }
 
 form.add-video {

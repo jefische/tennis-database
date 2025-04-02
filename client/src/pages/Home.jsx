@@ -49,7 +49,7 @@ export function Home() {
 								})}
 								<AddVideo />
 								{items.map((item) => {
-									return <div>{item.tournament}</div>;
+									return <div key={item._id}>{item.tournament}</div>;
 								})}
 							</div>
 						</div>
