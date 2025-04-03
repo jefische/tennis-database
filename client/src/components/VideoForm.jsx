@@ -22,6 +22,22 @@ export default function VideoForm({ onFormSubmit }) {
 			e.preventDefault();
 			e.stopPropagation();
 		} else {
+			e.preventDefault();
+			fetch("http://localhost:3000/data/videos", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					console.log("Status: ", data);
+					if (data.status == 400) {
+					}
+				})
+				.catch((error) => console.error("Error:", error)); // Note this will only catch like server timeout errors, a response status of 400 or 500 even though an error code, fetch doesn't consider these as errors in terms of the promise being rejected
+
 			onFormSubmit(); // Calls parent function to update state
 		}
 		setValidation(true);
@@ -36,7 +52,6 @@ export default function VideoForm({ onFormSubmit }) {
 
 	return (
 		<form
-			action="/data/videos"
 			id="video-form"
 			className={`add-video ${formValidated ? "was-validated" : ""}`}
 			style={{ maxWidth: "800px" }}

@@ -8,7 +8,7 @@ export default function AddVideo() {
 	// The Parent (Modal Component) holds the isSubmitted state.
 	// The Child (Form Component) triggers setIsSubmitted(true) when the form is submitted.
 	// The Parent (Modal Component) updates and displays the submission message instead of the form.
-	const [isSubmitted, setIsSubmitted] = useState(true);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
