@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "..", "client/src/dist")));
+app.use(express.static(path.join(__dirname, "..", "client/src/dist/")));
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "..", "client/src/dist/index.html"));
 });
@@ -71,7 +71,7 @@ app.post("/data/videos", async (req, res) => {
 		});
 
 		await userEntry.save();
-		res.redirect("/");
+		res.sendStatus(200);
 	} catch (error) {
 		if (error.code === 11000) {
 			// Duplicate key error

@@ -8,13 +8,13 @@ import { useState, useEffect } from "react";
 import { Fragment } from "react";
 
 export function Home() {
-	const [ytVideos, setVideos] = useState(Videos);
+	const [ytVideos, setVideos] = useState([]);
 	const [items, setItems] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:3000/api/items")
 			.then((response) => response.json())
-			.then((data) => setItems(data))
+			.then((data) => setVideos(data))
 			.catch((error) => {
 				console.error("Error fetching data:", error);
 			});
@@ -37,20 +37,17 @@ export function Home() {
 								height="300px"
 								className="mx-auto pt-[100px] "
 								/> */}
-								<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
+								<h1 className="text-5xl py-[50px]">
+									Welcome to the Match Database
+								</h1>
 							</div>
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
 								{ytVideos.map((x) => {
 									return (
-										<Fragment key={x.myID}>
-											<VideoCard id={x.youtube_id} title={x.title} />
-										</Fragment>
+										<VideoCard key={x.myID} id={x.youtube_id} title={x.title} />
 									);
 								})}
 								<AddVideo />
-								{items.map((item) => {
-									return <div key={item._id}>{item.tournament}</div>;
-								})}
 							</div>
 						</div>
 					</main>

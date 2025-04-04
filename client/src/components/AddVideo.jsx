@@ -2,6 +2,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import VideoForm from "./VideoForm";
 import { Fragment, useState, useEffect } from "react";
+import addImage from "../assets/images/icons/add-100.png";
+import checkMarkImg from "../assets/images/icons/check-mark-50.png";
 
 export default function AddVideo() {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -15,25 +17,29 @@ export default function AddVideo() {
 
 	useEffect(() => {
 		if (isSubmitted) {
-			// const timer = setTimeout(() => {
-			// 	setIsSubmitted(false);
-			// 	closeModal();
-			// }, 3000); // 3 seconds
-			// return () => clearTimeout(timer); // Cleanup timer on unmount
+			const timer = setTimeout(() => {
+				setIsSubmitted(false);
+				closeModal();
+			}, 3000); // 3 seconds
+			return () => clearTimeout(timer); // Cleanup timer on unmount
 		}
 	}, [isSubmitted, closeModal]);
 
 	return (
 		<Fragment>
 			<div className="card-cover">
-				<div className="header-background card-add-new" onClick={openModal}></div>
-				<p>Add New</p>
+				<div className="header-background card-add-new" onClick={openModal}>
+					<img src={addImage} alt="add new video icon" width={"100px"} height={"100px"} />
+				</div>
 			</div>
 			{isSubmitted ? (
-				<Modal show={true} centered backdrop="static" aria-labelledby="video modal" dialogClassName="modal-30w">
+				<Modal show={true} centered backdrop="static" aria-labelledby="video modal">
 					<Modal.Body>
 						<div className="flex justify-center">
-							<h2>Form Submission Successful!</h2>
+							<h3 className="flex gap-3 items-center">
+								<img src={checkMarkImg} alt="green check mark" />
+								Video Added Successfully!
+							</h3>
 						</div>
 					</Modal.Body>
 				</Modal>

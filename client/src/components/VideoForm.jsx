@@ -13,16 +13,19 @@ const fData = {
 export default function VideoForm({ onFormSubmit }) {
 	const [formData, setFormData] = useState(fData);
 	const [formValidated, setValidation] = useState(false);
+	const [urlValidated, setURLValidation] = useState(true);
 	const formRef = useRef(null);
 
 	async function saveVideo(e) {
+		e.preventDefault();
 		// const formData = new FormData(formRef.current);
 		// const formData = new FormData(e.target);
-		if (formRef.current.checkValidity() === false) {
-			e.preventDefault();
-			e.stopPropagation();
+		if (formRef.current.checkValidity() == false) {
+			// checkValidity() is a brower API that's auto executed on form submit. preventDefault() will stop this behavior.
+			// you still want to include preventDefault() if checkValidity() is false to block submission. checkValidity() only checks constraints.
+			setURLValidation(true);
+			setValidation(true);
 		} else {
-			e.preventDefault();
 			fetch("http://localhost:3000/data/videos", {
 				method: "POST",
 				headers: {
@@ -30,17 +33,23 @@ export default function VideoForm({ onFormSubmit }) {
 				},
 				body: JSON.stringify(formData),
 			})
-				.then((response) => response.json())
-				.then((data) => {
-					console.log("Status: ", data);
-					if (data.status == 400) {
+				.then(async (response) => {
+					if (!response.ok) {
+						const errorData = await response.json();
+						if (errorData.status == 400) {
+							console.log("Status: ", errorData);
+							setURLValidation(false);
+						} else {
+							throw errorData;
+						}
+					} else {
+						setValidation(true);
+						onFormSubmit(); // Calls parent function to update state
 					}
 				})
-				.catch((error) => console.error("Error:", error)); // Note this will only catch like server timeout errors, a response status of 400 or 500 even though an error code, fetch doesn't consider these as errors in terms of the promise being rejected
-
-			onFormSubmit(); // Calls parent function to update state
+				.catch((error) => console.error("Error:", error)); // Note this will only catch like server timeout errors,
+			// a response status of 400 or 500 even though an error code, fetch doesn't consider these as errors in terms of the promise being rejected.
 		}
-		setValidation(true);
 	}
 
 	const handleChange = (e) => {
@@ -116,7 +125,11 @@ export default function VideoForm({ onFormSubmit }) {
 						value={formData.youtubeid}
 						onChange={handleChange}
 					/>
-					<div className="invalid-feedback">Please enter a valid youtube url.</div>
+					{urlValidated ? (
+						<div className="invalid-feedback">Please enter a valid Youtube URL id.</div>
+					) : (
+						<div className="my-feedback">Youtube URL id already exists.</div>
+					)}
 				</div>
 				<div className="col">
 					<label className="form-label" htmlFor="round">

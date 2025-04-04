@@ -96,8 +96,11 @@ ul.filter {
 		height: 235px;
 	}
 	.card-add-new {
+		align-items: center;
 		background-color: #ccc;
 		border: 1px solid #ccc;
+		display: flex;
+		justify-content: center;
 	}
 }
 
@@ -143,6 +146,12 @@ form.add-video {
 			flex-basis: 80%;
 		}
 		div.invalid-feedback {
+			padding-left: 10px;
+		}
+		div.my-feedback {
+			color: #dc3545;
+			font-size: 0.875em;
+			margin-top: 0.25rem;
 			padding-left: 10px;
 		}
 	}
