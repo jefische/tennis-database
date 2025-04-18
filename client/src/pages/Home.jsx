@@ -2,14 +2,10 @@ import Navbar from "../components/Navbar";
 import VideoCard from "../components/VideoCard";
 import AddVideo from "../components/AddVideo";
 import Sidebar from "../components/Sidebar";
-import { Videos } from "../assets/data/videos";
 import { useState, useEffect } from "react";
-
-import { Fragment } from "react";
 
 export function Home() {
 	const [ytVideos, setVideos] = useState([]);
-	const [items, setItems] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:3000/api/items")

@@ -148,7 +148,7 @@ form.add-video {
 		div.invalid-feedback {
 			padding-left: 10px;
 		}
-		div.my-feedback {
+		div.duplicate-id-feedback {
 			color: #dc3545;
 			font-size: 0.875em;
 			margin-top: 0.25rem;

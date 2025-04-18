@@ -37,8 +37,8 @@ export default function VideoForm({ onFormSubmit }) {
 					if (!response.ok) {
 						const errorData = await response.json();
 						if (errorData.status == 400) {
-							console.log("Status: ", errorData);
 							setURLValidation(false);
+							throw errorData;
 						} else {
 							throw errorData;
 						}
@@ -128,7 +128,7 @@ export default function VideoForm({ onFormSubmit }) {
 					{urlValidated ? (
 						<div className="invalid-feedback">Please enter a valid Youtube URL id.</div>
 					) : (
-						<div className="my-feedback">Youtube URL id already exists.</div>
+						<div className="duplicate-id-feedback">Youtube URL id already exists.</div>
 					)}
 				</div>
 				<div className="col">
