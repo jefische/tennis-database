@@ -17,7 +17,7 @@ WORKDIR /app/server
 RUN npm install
 
 # Copy built frontend into backend's public directory
-COPY --from=build-client /app/client/dist ./public
+COPY --from=build-client /app/client/src/dist ./public
 
 # Expose backend port
 EXPOSE 8080
