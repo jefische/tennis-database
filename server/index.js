@@ -13,10 +13,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "..", "client/src/dist/")));
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "..", "client/src/dist/index.html"));
-});
+const isProduction = process.env.NODE_ENV === "production";
+
+// Serve React build only in production
+if (isProduction) {
+	app.use(express.static(path.join(__dirname, "public")));
+
+	// React routing fallback
+	app.get("/", (req, res) => {
+		res.sendFile(path.join(__dirname, "public", "index.html"));
+	});
+} else {
+	// Local static files
+	app.use(express.static(path.join(__dirname, "..", "client/src/dist/")));
+	app.get("/", (req, res) => {
+		res.sendFile(path.join(__dirname, "..", "client/src/dist/index.html"));
+	});
+}
 
 app.use(express.json()); // Middleware to parse JSON
 
