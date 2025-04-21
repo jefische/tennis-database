@@ -45,7 +45,7 @@ export function Home() {
 										<VideoCard key={x.myID} id={x.youtube_id} title={x.title} />
 									);
 								})}
-								<AddVideo />
+								{!isProduction && <AddVideo />}
 							</div>
 						</div>
 					</main>
