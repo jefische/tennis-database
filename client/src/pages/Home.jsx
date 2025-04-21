@@ -6,9 +6,11 @@ import { useState, useEffect } from "react";
 
 export function Home() {
 	const [ytVideos, setVideos] = useState([]);
+	const isProduction = process.env.NODE_ENV === "production";
+	const baseURL = isProduction ? "https://tennis-database.fly.dev" : "http://localhost:8080";
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api/items")
+		fetch(`${baseURL}/api/items`)
 			.then((response) => response.json())
 			.then((data) => setVideos(data))
 			.catch((error) => {

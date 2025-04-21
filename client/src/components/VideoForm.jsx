@@ -16,6 +16,9 @@ export default function VideoForm({ onFormSubmit }) {
 	const [urlValidated, setURLValidation] = useState(true);
 	const formRef = useRef(null);
 
+	const isProduction = process.env.NODE_ENV === "production";
+	const baseURL = isProduction ? "https://tennis-database.fly.dev" : "http://localhost:8080";
+
 	async function saveVideo(e) {
 		e.preventDefault();
 		// const formData = new FormData(formRef.current);
@@ -26,7 +29,7 @@ export default function VideoForm({ onFormSubmit }) {
 			setURLValidation(true);
 			setValidation(true);
 		} else {
-			fetch("http://localhost:3000/data/videos", {
+			fetch(`${baseURL}/data/videos`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
