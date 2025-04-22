@@ -55,6 +55,10 @@ ul.filter {
 	}
 }
 /*********** backgrounds **************/
+
+.bg-gray-custom {
+	background-color: rgb(33, 37, 41);
+}
 .hero-background {
 	/* background-image: url("./images/bgs/big3_v2.jpg"); */
 	/* background-position: center; */
@@ -155,4 +159,40 @@ form.add-video {
 			padding-left: 10px;
 		}
 	}
+}
+
+.hero-container {
+	height: 705px;
+
+	.herolist {
+		padding: 0;
+		position: relative;
+
+		li {
+			display: flex;
+			height: 100%;
+			justify-content: center;
+
+			img {
+				height: 100%;
+			}
+		}
+	}
+}
+
+#billboard-gradient {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	aspect-ratio: 1920 / 768;
+	background: transparent url(../images/bgs/header-gradient-overlay.png) top center;
+	background-size: cover;
+	z-index: 1;
+}
+
+.player-sections {
+	border: 1px solid;
+	font-size: 50px;
+	padding: 50px 0;
+	text-align: center;
 }
