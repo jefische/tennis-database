@@ -43,7 +43,7 @@ export function Home() {
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
 								{ytVideos.map((x) => {
 									return (
-										<VideoCard key={x.myID} id={x.youtube_id} title={x.title} />
+										<VideoCard key={x._id} id={x.youtube_id} title={x.title} />
 									);
 								})}
 								{!isProduction && <AddVideo />}
