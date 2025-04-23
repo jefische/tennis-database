@@ -10,6 +10,8 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import tennisBall from "../assets/images/icons/tennis-ball-dark-96.png";
+import avatar from "../assets/images/icons/male-user-100.png";
 
 const navigation = [
 	{ name: "Full Matches", href: "/", current: true },
@@ -63,11 +65,7 @@ export default function Navbar() {
 					</div>
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex shrink-0 items-center">
-							<img
-								alt="Your Company"
-								src="../assets/images/icons/tennis-ball-dark-96.png"
-								className="h-8 w-auto"
-							/>
+							<img alt="Site Logo" src={tennisBall} className="h-8 w-auto" />
 						</div>
 						<div className="hidden sm:ml-6 sm:block">
 							<div className="flex space-x-4">
@@ -98,8 +96,8 @@ export default function Navbar() {
 									<span className="absolute -inset-1.5" />
 									<span className="sr-only">Open user menu</span>
 									<img
-										alt=""
-										src="../assets/images/icons/male-user-100.png"
+										alt="avatar icon"
+										src={avatar}
 										className="size-8 rounded-full"
 									/>
 								</MenuButton>

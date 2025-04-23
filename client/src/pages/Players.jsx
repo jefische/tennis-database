@@ -1,3 +1,5 @@
+import novak from "../assets/images/bgs/novak_1920x1226.jpg";
+
 export default function Players() {
 	return (
 		<>
@@ -6,12 +8,7 @@ export default function Players() {
 					<div className="hero-container">
 						<ul className="herolist">
 							<li className="hero1">
-								<img
-									src="/assets/images/bgs/novak_1920x1226.jpg"
-									alt="hero image"
-									width=""
-									className=""
-								/>
+								<img src={novak} alt="hero image" />
 							</li>
 							<div id="billboard-gradient"></div>
 						</ul>
