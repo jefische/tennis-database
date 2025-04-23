@@ -2,8 +2,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import VideoForm from "./VideoForm";
 import { Fragment, useState, useEffect } from "react";
-import addImage from "../assets/images/icons/add-100.png";
-import checkMarkImg from "../assets/images/icons/check-mark-50.png";
 
 export default function AddVideo() {
 	const [modalIsOpen, setIsOpen] = useState(false);
@@ -29,7 +27,12 @@ export default function AddVideo() {
 		<Fragment>
 			<div className="card-cover">
 				<div className="header-background card-add-new" onClick={openModal}>
-					<img src={addImage} alt="add new video icon" width={"100px"} height={"100px"} />
+					<img
+						src="/icons/add-100.png"
+						alt="add new video icon"
+						width={"100px"}
+						height={"100px"}
+					/>
 				</div>
 			</div>
 			{isSubmitted ? (
@@ -37,7 +40,7 @@ export default function AddVideo() {
 					<Modal.Body>
 						<div className="flex justify-center">
 							<h3 className="flex gap-3 items-center">
-								<img src={checkMarkImg} alt="green check mark" />
+								<img src="/icons/check-mark-50.png" alt="green check mark" />
 								Video Added Successfully!
 							</h3>
 						</div>

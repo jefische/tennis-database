@@ -185,7 +185,7 @@ form.add-video {
 	bottom: 0;
 	width: 100%;
 	aspect-ratio: 1920 / 768;
-	background: transparent url("/header-gradient-overlay.png") top center;
+	background: transparent url("/bgs/header-gradient-overlay.png") top center;
 	background-size: cover;
 	z-index: 1;
 }

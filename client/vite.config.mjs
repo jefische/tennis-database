@@ -8,8 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
-	root: "src",
 	build: {
-		outDir: "../dist",
+		outDir: "/dist",
 	},
 });
