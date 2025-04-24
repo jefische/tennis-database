@@ -177,6 +177,18 @@ form.add-video {
 				height: 100%;
 			}
 		}
+		.carousel-item {
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			img {
+				height: 100%;
+			}
+		}
+		.carousel-control-prev,
+		.carousel-control-next {
+			display: none;
+		}
 	}
 }
 
