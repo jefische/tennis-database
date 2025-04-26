@@ -2,14 +2,14 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Fragment, useState } from "react";
 
-export default function VideoCard({ id, title }) {
+export default function VideoCard({ id, title, maxWidth }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 	return (
 		<Fragment>
-			<div className="card-cover">
+			<div className="card-cover" style={{ maxWidth: maxWidth }}>
 				<div
 					className="header-background"
 					onClick={openModal}
@@ -30,7 +30,10 @@ export default function VideoCard({ id, title }) {
 				<Modal.Header closeButton>
 					<Modal.Title>{title}</Modal.Title>
 				</Modal.Header>
-				<Modal.Body style={{ height: "80vh" }} className="flex flex-col 2xl:flex-row gap-[20px]">
+				<Modal.Body
+					style={{ height: "80vh" }}
+					className="flex flex-col 2xl:flex-row gap-[20px]"
+				>
 					<div className="col" style={{ maxWidth: "1280px" }}>
 						<iframe
 							height="100%"

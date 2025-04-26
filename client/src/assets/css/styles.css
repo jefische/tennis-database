@@ -185,16 +185,12 @@ form.add-video {
 				height: 100%;
 			}
 		}
-		.carousel-control-prev,
-		.carousel-control-next {
-			display: none;
-		}
 	}
 }
 
 #billboard-gradient {
 	position: absolute;
-	bottom: 0;
+	bottom: -1;
 	width: 100%;
 	aspect-ratio: 1920 / 768;
 	background: transparent url("/bgs/header-gradient-overlay.png") top center;
