@@ -1,5 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import VideoCard from "../components/VideoCard";
+import PlayerVideoCard from "../components/PlayerVideoCard";
 
 export default function Players() {
 	const myWidth = "200px";
@@ -34,13 +35,14 @@ export default function Players() {
 					</h1>
 
 					<div className="d-flex ps-5 flex-wrap gap-5 mt-5">
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth}></VideoCard>
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<PlayerVideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+						<PlayerVideoCard id="Re-8_POaRIw" description="Wawrinka" maxWidth={myWidth} />
 					</div>
 
 					<section className="player-sections">Player Content</section>
