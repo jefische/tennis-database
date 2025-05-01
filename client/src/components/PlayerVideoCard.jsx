@@ -8,7 +8,7 @@ export default function PlayerVideoCard({ id, title, maxWidth }) {
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 	return (
-		<Fragment>
+		<Fragment className="playerCard">
 			<div className="card-cover" style={{ maxWidth: maxWidth }}>
 				<div
 					className="header-background"
@@ -42,7 +42,6 @@ export default function PlayerVideoCard({ id, title, maxWidth }) {
 							allowFullScreen
 						></iframe>
 					</div>
-					<p>This is the body of the modal</p>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={closeModal}>

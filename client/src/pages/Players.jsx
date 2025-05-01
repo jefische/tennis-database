@@ -1,5 +1,4 @@
 import Carousel from "react-bootstrap/Carousel";
-import VideoCard from "../components/VideoCard";
 import PlayerVideoCard from "../components/PlayerVideoCard";
 
 export default function Players() {
@@ -34,15 +33,44 @@ export default function Players() {
 						Individual Players Video Section
 					</h1>
 
-					<div className="d-flex ps-5 flex-wrap gap-5 mt-5">
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<VideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<PlayerVideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
-						<PlayerVideoCard id="Re-8_POaRIw" description="Wawrinka" maxWidth={myWidth} />
+					<div className="player-videoContainer">
+						<h2 style={{ color: "#fff" }}>Stanislas Wawrinka</h2>
+						<div className="player-videoContainer-mobile">
+							<PlayerVideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="_cohjbquvwc" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="RDl2Kz0gd18" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="zYqtCPvGf4Y" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="hUuj7AoOWpc" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="_FBLXOaSAsU" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="Re-8_POaRIw" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="SlgMvQQrYhg" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="wWCVFRRaFCs" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="mx3eA5P-3nA" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="q3J2P8on7js" description="Wawrinka" maxWidth={myWidth} />
+							<PlayerVideoCard id="_7gd-XJRiEQ" description="Wawrinka" maxWidth={myWidth} />
+						</div>
+						<Carousel interval={null}>
+							<Carousel.Item>
+								<div className="carousel-item-container">
+									<PlayerVideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="_cohjbquvwc" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="RDl2Kz0gd18" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="zYqtCPvGf4Y" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="hUuj7AoOWpc" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="_FBLXOaSAsU" description="Wawrinka" maxWidth={myWidth} />
+								</div>
+							</Carousel.Item>
+							<Carousel.Item>
+								<div className="carousel-item-container">
+									<PlayerVideoCard id="Re-8_POaRIw" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="SlgMvQQrYhg" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="wWCVFRRaFCs" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="mx3eA5P-3nA" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="q3J2P8on7js" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="_7gd-XJRiEQ" description="Wawrinka" maxWidth={myWidth} />
+								</div>
+							</Carousel.Item>
+						</Carousel>
 					</div>
 
 					<section className="player-sections">Player Content</section>
