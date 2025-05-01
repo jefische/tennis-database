@@ -17,41 +17,61 @@ select {
 	padding-top: 5px;
 }
 
-/*********** sidebar filters **************/
-ul.filter {
-	padding: 10px 0;
+/*********** Sidebar filters **************/
+aside.sidebar {
+	border-right: 1px solid;
 
-	font-weight: 700;
-	li {
-		font-weight: 400;
-		padding: 5px;
-		label {
-			padding-left: 10px;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+
+	padding: 15px 15px;
+	height: 100%;
+	width: 245px;
+	max-width: 245px;
+	min-width: 245px;
+
+	ul.filter {
+		padding: 10px 0;
+
+		font-weight: 700;
+		li {
+			font-weight: 400;
+			padding: 5px;
+			label {
+				padding-left: 10px;
+			}
+		}
+	}
+
+	.accordion-rjs {
+		max-width: 180px;
+		min-width: 180px;
+		padding-top: 10px;
+
+		.accordion-item-rjs {
+			.accordion-title-rjs {
+				border-top: 1px solid;
+				cursor: pointer;
+				display: flex;
+				font-weight: 700;
+				justify-content: space-between;
+				padding-top: 10px;
+			}
+			.accordion-title-rjs:hover h6 {
+				text-decoration: underline;
+			}
+			.accordion-title-rjs:active h6,
+			.accordion-title-rjs:active div.expand {
+				scale: 0.95;
+			}
 		}
 	}
 }
 
-.accordion-rjs {
-	max-width: 180px;
-	min-width: 180px;
-	padding-top: 10px;
-
-	.accordion-item-rjs {
-		.accordion-title-rjs {
-			border-top: 1px solid;
-			cursor: pointer;
-			display: flex;
-			font-weight: 700;
-			justify-content: space-between;
-			padding-top: 10px;
-		}
-		.accordion-title-rjs:hover h6 {
-			text-decoration: underline;
-		}
-		.accordion-title-rjs:active h6,
-		.accordion-title-rjs:active div.expand {
-			scale: 0.95;
-		}
+@media (min-width: 768px) {
+	aside.sidebar {
+		display: flex;
 	}
 }
 /*********** backgrounds **************/
@@ -160,6 +180,7 @@ form.add-video {
 		}
 	}
 }
+/* Learn From the Pros Section ************************************************************/
 
 .hero-container {
 	height: 705px;
@@ -168,27 +189,18 @@ form.add-video {
 		padding: 0;
 		position: relative;
 
-		li {
-			display: flex;
-			height: 100%;
-			justify-content: center;
-
-			img {
-				height: 100%;
-			}
-		}
 		.carousel-item {
 			display: flex;
 			height: 100%;
 			justify-content: center;
 			img {
 				height: 100%;
+				max-width: fit-content;
 			}
 		}
 	}
 }
 
-/* Learn From the Pros Section *********************************************************** */
 #billboard-gradient {
 	position: absolute;
 	bottom: -1;

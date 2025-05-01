@@ -17,7 +17,7 @@ export default function Players() {
 									<img src="/bgs/big3.jpeg" alt="hero image" />
 								</Carousel.Item>
 								<Carousel.Item interval={5000}>
-									<img src="/bgs/novak_1920x1226.jpg" alt="hero image" />
+									<img src="/bgs/novak_640x408.jpg" alt="hero image" />
 								</Carousel.Item>
 							</Carousel>
 							<div id="billboard-gradient"></div>

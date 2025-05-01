@@ -68,72 +68,61 @@ export default function Sidebar({ setVideos }) {
 	};
 
 	return (
-		<aside
-			className="pt-[15px]"
-			style={{
-				width: "245px",
-				maxWidth: "245px",
-				minWidth: "245px",
-				borderRight: "1px solid",
-				height: "100%",
-			}}
-		>
-			<div className="h-100 flex flex-col items-center px-[15px]">
-				<form action="" className="w-[180px]" onSubmit={handleSubmit}>
-					Filter Match Results
-					<div className="accordion-rjs">
-						<div className="accordion-item-rjs">
-							<div className="accordion-title-rjs" onClick={() => setIsActive(!isActive)}>
-								<h6>Tournament</h6>
-								<div className="expand pe-[10px]">{isActive ? "-" : "+"}</div>
-							</div>
-							<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
-								<ul className="filter">
-									<li>
-										<input
-											type="checkbox"
-											name="australianOpen"
-											checked={formData.australianOpen.include}
-											onChange={handleChange}
-										/>
-										<label htmlFor="australianOpen">{`Australian Open (${aoCount})`}</label>
-									</li>
-									<li>
-										<input
-											type="checkbox"
-											name="frenchOpen"
-											checked={formData.frenchOpen.include}
-											onChange={handleChange}
-										/>
-										<label htmlFor="frenchOpen">{`French Open (${foCount})`}</label>
-									</li>
-									<li>
-										<input
-											type="checkbox"
-											name="wimbledon"
-											checked={formData.wimbledon.include}
-											onChange={handleChange}
-										/>
-										<label htmlFor="wimbledon">{`Wimbledon (${wimbledonCount})`}</label>
-									</li>
-									<li>
-										<input
-											type="checkbox"
-											name="usOpen"
-											checked={formData.usOpen.include}
-											onChange={handleChange}
-										/>
-										<label htmlFor="usOpen">{`US Open (${usoCount})`}</label>
-									</li>
-								</ul>
-							</div>
+		<aside className="sidebar">
+			<form action="" className="w-[180px]" onSubmit={handleSubmit}>
+				Filter Match Results
+				<div className="accordion-rjs">
+					<div className="accordion-item-rjs">
+						<div className="accordion-title-rjs" onClick={() => setIsActive(!isActive)}>
+							<h6>Tournament</h6>
+							<div className="expand pe-[10px]">{isActive ? "-" : "+"}</div>
+						</div>
+						<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
+							<ul className="filter">
+								<li>
+									<input
+										type="checkbox"
+										name="australianOpen"
+										checked={formData.australianOpen.include}
+										onChange={handleChange}
+									/>
+									<label htmlFor="australianOpen">{`Australian Open (${aoCount})`}</label>
+								</li>
+								<li>
+									<input
+										type="checkbox"
+										name="frenchOpen"
+										checked={formData.frenchOpen.include}
+										onChange={handleChange}
+									/>
+									<label htmlFor="frenchOpen">{`French Open (${foCount})`}</label>
+								</li>
+								<li>
+									<input
+										type="checkbox"
+										name="wimbledon"
+										checked={formData.wimbledon.include}
+										onChange={handleChange}
+									/>
+									<label htmlFor="wimbledon">{`Wimbledon (${wimbledonCount})`}</label>
+								</li>
+								<li>
+									<input
+										type="checkbox"
+										name="usOpen"
+										checked={formData.usOpen.include}
+										onChange={handleChange}
+									/>
+									<label htmlFor="usOpen">{`US Open (${usoCount})`}</label>
+								</li>
+							</ul>
 						</div>
 					</div>
-					<button className="applyFilter btn btn-primary mt-4" type="submit">
-						Apply Filters
-					</button>
-				</form>
-			</div>
+				</div>
+				<button className="applyFilter btn btn-primary mt-4" type="submit">
+					Apply Filters
+				</button>
+			</form>
 		</aside>
 	);
 }
