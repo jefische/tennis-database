@@ -8,7 +8,7 @@ export default function PlayerVideoCard({ id, title, maxWidth }) {
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
 	return (
-		<Fragment className="playerCard">
+		<Fragment>
 			<div className="card-cover" style={{ maxWidth: maxWidth }}>
 				<div
 					className="header-background"
