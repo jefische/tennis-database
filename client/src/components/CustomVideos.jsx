@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Fragment, useState } from "react";
 
-export default function VideoCard({ id, title, maxWidth }) {
+export default function CustomVideos({ id, title, maxWidth }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => setIsOpen(true);
@@ -10,13 +10,9 @@ export default function VideoCard({ id, title, maxWidth }) {
 	return (
 		<Fragment>
 			<div className="card-cover" style={{ maxWidth: maxWidth }}>
-				<div
-					className="header-background"
-					onClick={openModal}
-					style={{
-						backgroundImage: `url(http://img.youtube.com/vi/${id}/0.jpg)`,
-					}}
-				></div>
+				<video className="header-background" onClick={openModal}>
+					<source src={id} />
+				</video>
 				<p className="card-title">{title}</p>
 			</div>
 			<Modal
@@ -25,7 +21,7 @@ export default function VideoCard({ id, title, maxWidth }) {
 				centered
 				backdrop="static"
 				aria-labelledby="video modal"
-				dialogClassName="modal-90w"
+				dialogClassName="modal-75w"
 			>
 				<Modal.Header closeButton>
 					<Modal.Title>{title}</Modal.Title>
@@ -35,15 +31,14 @@ export default function VideoCard({ id, title, maxWidth }) {
 						<iframe
 							height="100%"
 							width="100%"
-							src={`https://www.youtube.com/embed/${id}`}
+							src={`${id}`}
 							title={title}
 							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							referrerPolicy="strict-origin-when-cross-origin"
 							allowFullScreen
 						></iframe>
 					</div>
-					<p>This is the body of the modal</p>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={closeModal}>

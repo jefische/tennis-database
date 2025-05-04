@@ -6,6 +6,7 @@ import Players from "./pages/Players";
 import Navbar from "./components/Navbar";
 import Draws from "./pages/Draws";
 import FAQ from "./pages/FAQ";
+import Profile from "./pages/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
 					<Route path="/players" element={<Players />} />
 					<Route path="/draws" element={<Draws />} />
 					<Route path="/faq" element={<FAQ />} />
+					<Route path="/profile" element={<Profile />} />
 				</Routes>
 			</BrowserRouter>
 		</>
