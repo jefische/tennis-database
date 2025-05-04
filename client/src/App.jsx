@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import Players from "./pages/Players";
 import Navbar from "./components/Navbar";
+import Draws from "./pages/Draws";
+import FAQ from "./pages/FAQ";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -14,6 +16,8 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/players" element={<Players />} />
+					<Route path="/draws" element={<Draws />} />
+					<Route path="/faq" element={<FAQ />} />
 				</Routes>
 			</BrowserRouter>
 		</>

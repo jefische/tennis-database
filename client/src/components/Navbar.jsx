@@ -14,8 +14,8 @@ import { useState } from "react";
 const navigation = [
 	{ name: "Full Matches", href: "/", current: true },
 	{ name: "Learn From the Pros", href: "/players", current: false },
-	{ name: "Draws", href: "#", current: false },
-	{ name: "FAQ", href: "#", current: false },
+	{ name: "Draws", href: "/draws", current: false },
+	{ name: "FAQ", href: "/faq", current: false },
 ];
 
 function classNames(...classes) {
@@ -51,23 +51,13 @@ export default function Navbar() {
 						<DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
 							<span className="absolute -inset-0.5" />
 							<span className="sr-only">Open main menu</span>
-							<Bars3Icon
-								aria-hidden="true"
-								className="block size-6 group-data-open:hidden"
-							/>
-							<XMarkIcon
-								aria-hidden="true"
-								className="hidden size-6 group-data-open:block"
-							/>
+							<Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
+							<XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
 						</DisclosureButton>
 					</div>
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex shrink-0 items-center">
-							<img
-								alt="Site Logo"
-								src="/icons/tennis-ball-dark-96.png"
-								className="h-8 w-auto"
-							/>
+							<img alt="Site Logo" src="/icons/tennis-ball-dark-96.png" className="h-8 w-auto" />
 						</div>
 						<div className="hidden sm:ml-6 sm:block">
 							<div className="flex space-x-4">
