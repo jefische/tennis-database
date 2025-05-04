@@ -70,10 +70,17 @@ export default function Players() {
 									<PlayerVideoCard id="_7gd-XJRiEQ" description="Wawrinka" maxWidth={myWidth} />
 								</div>
 							</Carousel.Item>
+							<Carousel.Item>
+								<div className="carousel-item-container"></div>
+							</Carousel.Item>
 						</Carousel>
 					</div>
 
-					<section className="player-sections">Player Content</section>
+					<section className="player-sections d-flex justify-content-center" style={{ color: "#fff" }}>
+						<video width="640" height="360" controls>
+							<source src="https://my-tennis-videos.s3.us-east-2.amazonaws.com/JF_Serving_AHS_12092024.mp4" />
+						</video>
+					</section>
 					<section className="player-sections">Player Content</section>
 					<section className="player-sections">Player Content</section>
 					<section className="player-sections">Player Content</section>
