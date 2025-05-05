@@ -23,7 +23,7 @@ export default function Players() {
 							<div id="billboard-gradient"></div>
 						</div>
 					</section>
-					<h1
+					{/* <h1
 						style={{
 							marginTop: "50px",
 							backgroundColor: "#ccc",
@@ -31,7 +31,7 @@ export default function Players() {
 						}}
 					>
 						Individual Players Video Section
-					</h1>
+					</h1> */}
 
 					<div className="player-videoContainer">
 						<h2 style={{ color: "#fff" }}>Stanislas Wawrinka</h2>
