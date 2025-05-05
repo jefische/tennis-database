@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 export function Home() {
 	const [ytVideos, setVideos] = useState([]);
+	const [allVideos, setAllVideos] = useState([]);
+	// let allVideos = [];
 	// const isProduction = true;
 	// const isProduction = import.meta.env.VITE_NODE_ENV === "production";
 	const isProduction = import.meta.env.PROD;
@@ -13,7 +15,11 @@ export function Home() {
 	useEffect(() => {
 		fetch(`${baseURL}/api/items`)
 			.then((response) => response.json())
-			.then((data) => setVideos(data))
+			.then((data) => {
+				setVideos(data);
+				setAllVideos(data);
+				console.log(allVideos);
+			})
 			.catch((error) => {
 				console.error("Error fetching data:", error);
 			});
@@ -22,16 +28,14 @@ export function Home() {
 	return (
 		<>
 			<div className="body-container">
-				<section className="flex" style={{ height: "100%" }}>
-					<Sidebar setVideos={setVideos} />
+				<section className="flex bg-gray-custom" style={{ height: "100%" }}>
+					<Sidebar allVideos={allVideos} setVideos={setVideos} />
 					<main>
 						<div className="content-container px-[50px]">
 							<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
 								{ytVideos.map((x) => {
-									return (
-										<VideoCard key={x._id} id={x.youtube_id} title={x.title} />
-									);
+									return <VideoCard key={x._id} id={x.youtube_id} title={x.title} />;
 								})}
 								{!isProduction && <AddVideo />}
 							</div>

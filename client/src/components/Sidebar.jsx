@@ -1,9 +1,30 @@
 import { useState } from "react";
-import { Videos } from "../assets/data/videos";
+import YearFilters from "./YearFilters";
 
-export default function Sidebar({ setVideos }) {
+export default function Sidebar({ allVideos, setVideos }) {
 	// isActive state is used to manage the accordion dropdown filters in the sidebar
 	const [isActive, setIsActive] = useState(true);
+
+	let initialData = {};
+	allVideos.map((x) => {
+		let key = x.tournament.replace(/\s/g, "");
+		let year = x.year;
+		if (!initialData[key]) {
+			initialData[key] = {};
+			initialData[key].title = x.tournament;
+			initialData[key].year = [x.year];
+			initialData[key].include = true;
+		} else {
+			let temp = initialData[key].year.slice(0);
+			console.log(initialData[key]);
+			if (!(x.year in temp)) {
+				console.log(x.year + " is not in " + temp);
+				// temp.push(x.year);
+				// initialData[key].year.push(x.year);
+			}
+		}
+	});
+	console.log(initialData);
 
 	// formData is used to manage the checkboxes and pass them to form submit for ytVideo filtering and rendering in Home.jsx
 	const [formData, setFormData] = useState({
@@ -30,7 +51,7 @@ export default function Sidebar({ setVideos }) {
 		wimbledonCount = 0,
 		usoCount = 0;
 
-	for (let item of Videos) {
+	for (let item of allVideos) {
 		if (item.tournament == "Australian Open") {
 			aoCount++;
 		} else if (item.tournament == "French Open") {
@@ -47,7 +68,7 @@ export default function Sidebar({ setVideos }) {
 		let filterVideos = [];
 		for (var key in formData) {
 			if (formData[key].include == true) {
-				const temp = Videos.filter((x) => x.tournament == formData[key].title);
+				const temp = allVideos.filter((x) => x.tournament == formData[key].title);
 				if (temp.length > 0) {
 					filterVideos = filterVideos.concat(temp);
 				}
@@ -119,6 +140,7 @@ export default function Sidebar({ setVideos }) {
 						</div>
 					</div>
 				</div>
+				<YearFilters allVideos={allVideos} setFormData={setFormData} />
 				<button className="applyFilter btn btn-primary mt-4" type="submit">
 					Apply Filters
 				</button>
