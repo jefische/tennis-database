@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import YearFilters from "./YearFilters";
 
 export default function Sidebar({ allVideos, setVideos }) {
 	// isActive state is used to manage the accordion dropdown filters in the sidebar
 	const [isActive, setIsActive] = useState(true);
+	// formData is used to manage the checkboxes and pass them to form submit for ytVideo filtering and rendering in Home.jsx
+	const [formData, setFormData] = useState({});
 
 	let initialData = {};
 	allVideos.map((x) => {
@@ -13,55 +15,19 @@ export default function Sidebar({ allVideos, setVideos }) {
 			initialData[key] = {};
 			initialData[key].title = x.tournament;
 			initialData[key].year = [x.year];
+			initialData[key].count = 1;
 			initialData[key].include = true;
 		} else {
-			let temp = initialData[key].year.slice(0);
-			console.log(initialData[key]);
-			if (!(x.year in temp)) {
-				console.log(x.year + " is not in " + temp);
-				// temp.push(x.year);
-				// initialData[key].year.push(x.year);
+			let temp = initialData[key].year;
+			if (!temp.includes(year)) {
+				initialData[key].year.push(year);
 			}
+			initialData[key].count++;
 		}
 	});
-	console.log(initialData);
-
-	// formData is used to manage the checkboxes and pass them to form submit for ytVideo filtering and rendering in Home.jsx
-	const [formData, setFormData] = useState({
-		australianOpen: {
-			title: "Australian Open",
-			include: true,
-		},
-		frenchOpen: {
-			title: "French Open",
-			include: true,
-		},
-		wimbledon: {
-			title: "Wimbledon",
-			include: true,
-		},
-		usOpen: {
-			title: "US Open",
-			include: true,
-		},
-	});
-
-	let aoCount = 0,
-		foCount = 0,
-		wimbledonCount = 0,
-		usoCount = 0;
-
-	for (let item of allVideos) {
-		if (item.tournament == "Australian Open") {
-			aoCount++;
-		} else if (item.tournament == "French Open") {
-			foCount++;
-		} else if (item.tournament == "Wimbledon") {
-			wimbledonCount++;
-		} else if (item.tournament == "US Open") {
-			usoCount++;
-		}
-	}
+	useEffect(() => {
+		setFormData(initialData);
+	}, [allVideos]); // This dependency allows setFormData to run twice. Initially allVideos is empty on first render while the data is fetched from our API.
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -100,42 +66,26 @@ export default function Sidebar({ allVideos, setVideos }) {
 						</div>
 						<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
 							<ul className="filter">
-								<li>
-									<input
-										type="checkbox"
-										name="australianOpen"
-										checked={formData.australianOpen.include}
-										onChange={handleChange}
-									/>
-									<label htmlFor="australianOpen">{`Australian Open (${aoCount})`}</label>
-								</li>
-								<li>
-									<input
-										type="checkbox"
-										name="frenchOpen"
-										checked={formData.frenchOpen.include}
-										onChange={handleChange}
-									/>
-									<label htmlFor="frenchOpen">{`French Open (${foCount})`}</label>
-								</li>
-								<li>
-									<input
-										type="checkbox"
-										name="wimbledon"
-										checked={formData.wimbledon.include}
-										onChange={handleChange}
-									/>
-									<label htmlFor="wimbledon">{`Wimbledon (${wimbledonCount})`}</label>
-								</li>
-								<li>
-									<input
-										type="checkbox"
-										name="usOpen"
-										checked={formData.usOpen.include}
-										onChange={handleChange}
-									/>
-									<label htmlFor="usOpen">{`US Open (${usoCount})`}</label>
-								</li>
+								{Object.entries(initialData).map((key, value) => {
+									let name = key[1].title.replace(/\s/g, "");
+									let title = key[1].title;
+									let count = key[1].count;
+									return (
+										<li key={value}>
+											<input
+												type="checkbox"
+												name={name}
+												checked={
+													Object.keys(formData).length === 0 ? true : formData[name].include
+												}
+												onChange={handleChange}
+											/>
+											<label htmlFor={name}>
+												{title} ({count})
+											</label>
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 					</div>

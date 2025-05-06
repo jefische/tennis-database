@@ -15,6 +15,15 @@ export default function YearFilters({ allVideos, setFormData }) {
 				</div>
 				<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
 					<ul className="filter">
+						{allVideos.map((x) => {
+							let name = x.year;
+							return (
+								<li>
+									<input type="checkbox" />
+									<label htmlFor={name}>{name}</label>
+								</li>
+							);
+						})}
 						<li>
 							<input type="checkbox" name="2025" checked={true} onChange={handleChange} />
 							<label htmlFor="2025">{`2025`}</label>

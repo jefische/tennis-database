@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import { useState, useEffect } from "react";
 
 export function Home() {
-	const [ytVideos, setVideos] = useState([]);
+	const [activeVideos, setVideos] = useState([]);
 	const [allVideos, setAllVideos] = useState([]);
 	// let allVideos = [];
 	// const isProduction = true;
@@ -18,7 +18,6 @@ export function Home() {
 			.then((data) => {
 				setVideos(data);
 				setAllVideos(data);
-				console.log(allVideos);
 			})
 			.catch((error) => {
 				console.error("Error fetching data:", error);
@@ -34,7 +33,7 @@ export function Home() {
 						<div className="content-container px-[50px]">
 							<h1 className="text-5xl py-[50px]">Welcome to the Match Database</h1>
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
-								{ytVideos.map((x) => {
+								{activeVideos.map((x) => {
 									return <VideoCard key={x._id} id={x.youtube_id} title={x.title} />;
 								})}
 								{!isProduction && <AddVideo />}
