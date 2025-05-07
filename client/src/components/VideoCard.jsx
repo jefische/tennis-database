@@ -43,7 +43,7 @@ export default function VideoCard({ id, title, maxWidth }) {
 							allowFullScreen
 						></iframe>
 					</div>
-					<p>This is the body of the modal</p>
+					<p>Comments section in development</p>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={closeModal}>

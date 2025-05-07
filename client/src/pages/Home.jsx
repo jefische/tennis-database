@@ -19,7 +19,7 @@ export function Home() {
 				count: 1,
 				include: true,
 			};
-		} else if (key !== "year") {
+		} else {
 			if (!acc[key].year.includes(x.year)) {
 				acc[key].year.push(x.year);
 			}
@@ -30,13 +30,13 @@ export function Home() {
 			acc[x.year] = {
 				title: "year",
 				include: true,
+				count: 1,
 			};
+		} else {
+			acc[x.year].count++;
 		}
 		return acc;
 	}, {});
-
-	console.log("initial data:");
-	console.log(initialData);
 
 	useEffect(() => {
 		fetch(`${baseURL}/api/items`)

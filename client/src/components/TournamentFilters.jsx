@@ -1,19 +1,8 @@
 import { useState } from "react";
 
-export default function TournamentFilters({ initFilters, formData, setFormData }) {
+export default function TournamentFilters({ initFilters, formData, handleChange }) {
 	// isActive state is used to manage the accordion dropdown filters in the sidebar
 	const [isActive, setIsActive] = useState(true);
-
-	const handleChange = (e) => {
-		const { name, checked } = e.target;
-		setFormData({
-			...formData,
-			[name]: {
-				...formData[name],
-				include: checked,
-			},
-		});
-	};
 
 	return (
 		<div className="accordion-rjs">
