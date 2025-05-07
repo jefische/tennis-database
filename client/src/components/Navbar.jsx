@@ -1,14 +1,6 @@
-import {
-	Disclosure,
-	DisclosureButton,
-	DisclosurePanel,
-	Menu,
-	MenuButton,
-	MenuItem,
-	MenuItems,
-} from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const navigation = [
@@ -24,6 +16,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
 	const [activeLink, setActiveLink] = useState(navigation);
+	const currentPath = useLocation().pathname;
 
 	const isProduction = import.meta.env.PROD;
 	const isProfile = isProduction ? false : true;
@@ -70,7 +63,7 @@ export default function Navbar() {
 										to={item.href}
 										aria-current={item.current ? "page" : undefined}
 										className={classNames(
-											item.current
+											item.href === currentPath
 												? "bg-gray-900 text-white"
 												: "text-gray-300 hover:bg-gray-700 hover:text-white",
 											"rounded-md px-3 py-2 text-sm font-medium",
@@ -91,11 +84,7 @@ export default function Navbar() {
 									<MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
 										<span className="absolute -inset-1.5" />
 										<span className="sr-only">Open user menu</span>
-										<img
-											alt="avatar icon"
-											src="/icons/male-user-100.png"
-											className="size-8 rounded-full"
-										/>
+										<img alt="avatar icon" src="/icons/male-user-100.png" className="size-8 rounded-full" />
 									</MenuButton>
 								</div>
 								<MenuItems
@@ -142,9 +131,7 @@ export default function Navbar() {
 							to={item.href}
 							aria-current={item.current ? "page" : undefined}
 							className={classNames(
-								item.current
-									? "bg-gray-900 text-white"
-									: "text-gray-300 hover:bg-gray-700 hover:text-white",
+								item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
 								"block rounded-md px-3 py-2 text-base font-medium",
 							)}
 							onClick={handleActive}

@@ -6,32 +6,14 @@ require("dotenv").config(); // Load .env file variables into process.env
 let bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-
 mongoose.connect(process.env.MONGO_URI);
+
 // Mount bodyParse middleware for POST requests
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(cors());
+app.use(express.json()); // Middleware to parse JSON
 
 const isProduction = process.env.NODE_ENV === "production";
-
-// Serve React build only in production
-if (isProduction) {
-	app.use(express.static(path.join(__dirname, "public")));
-
-	// React routing fallback
-	app.get("/", (req, res) => {
-		res.sendFile(path.join(__dirname, "public", "index.html"));
-	});
-} else {
-	// Local static files
-	app.use(express.static(path.join(__dirname, "..", "client/dist/")));
-	app.get("/", (req, res) => {
-		res.sendFile(path.join(__dirname, "..", "client/dist/index.html"));
-	});
-}
-
-app.use(express.json()); // Middleware to parse JSON
 
 // Define URL schema for MongoDB
 const Schema = mongoose.Schema;
@@ -106,6 +88,21 @@ app.post("/data/videos", async (req, res) => {
 	// });
 });
 
+// Serve React build only in production
+if (isProduction) {
+	app.use(express.static(path.join(__dirname, "public")));
+
+	// React routing fallback
+	app.get("/:wildcard", (req, res) => {
+		res.sendFile(path.join(__dirname, "public", "index.html"));
+	});
+} else {
+	// Local static files
+	app.use(express.static(path.join(__dirname, "..", "client/dist/")));
+	app.get("/:wildcard", (req, res) => {
+		res.sendFile(path.join(__dirname, "..", "client/dist/index.html"));
+	});
+}
 const listener = app.listen(process.env.PORT || 8080, () => {
 	console.log("Your app is listening on port " + listener.address().port);
 });
