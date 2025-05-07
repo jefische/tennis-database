@@ -1,10 +1,28 @@
 import { useState } from "react";
 
-export default function YearFilters({ allVideos, setFormData }) {
+export default function YearFilters({ initFilters, allVideos, setFormData, formData }) {
 	// isActive state is used to manage the accordion dropdown filters in the sidebar
 	const [isActive, setIsActive] = useState(true);
 
-	const handleChange = (e) => {};
+	const handleChange = (e) => {
+		const { name, checked } = e.target;
+		setFormData({
+			...formData,
+			[name]: {
+				...formData[name],
+				include: checked,
+			},
+		});
+	};
+
+	const years = allVideos.reduce((acc, x) => {
+		let val = x.year;
+		if (!acc.includes(val)) {
+			acc.push(val);
+			acc.sort();
+		}
+		return acc;
+	}, []);
 
 	return (
 		<div className="accordion-rjs">
@@ -15,16 +33,20 @@ export default function YearFilters({ allVideos, setFormData }) {
 				</div>
 				<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
 					<ul className="filter">
-						{allVideos.map((x) => {
-							let name = x.year;
+						{years.map((x) => {
 							return (
 								<li>
-									<input type="checkbox" />
-									<label htmlFor={name}>{name}</label>
+									<input
+										type="checkbox"
+										name={x}
+										checked={Object.keys(formData).length === 0 ? true : formData[x].include}
+										onChange={handleChange}
+									/>
+									<label htmlFor={x}>{x}</label>
 								</li>
 							);
 						})}
-						<li>
+						{/* <li>
 							<input type="checkbox" name="2025" checked={true} onChange={handleChange} />
 							<label htmlFor="2025">{`2025`}</label>
 						</li>
@@ -39,7 +61,7 @@ export default function YearFilters({ allVideos, setFormData }) {
 						<li>
 							<input type="checkbox" name="2022" checked={true} onChange={handleChange} />
 							<label htmlFor="2022">{`2022`}</label>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>
