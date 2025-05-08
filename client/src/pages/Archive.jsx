@@ -51,6 +51,24 @@ export function Archive() {
 			});
 	}, []);
 
+	function sortVideos(a, b) {
+		const nameA = a.tournament.toUpperCase();
+		const nameB = b.tournament.toUpperCase();
+
+		const yearA = a.year;
+		const yearB = b.year;
+
+		if (nameA < nameB) {
+			return -1;
+		}
+		if (nameA > nameB) {
+			return 1;
+		}
+		if (nameA === nameB) {
+			return yearB - yearA;
+		}
+	}
+
 	return (
 		<>
 			<Navbar />
@@ -62,7 +80,7 @@ export function Archive() {
 						<div className="content-container px-[50px]">
 							<h1 className="text-5xl py-[50px]">Welcome to the Match Archive</h1>
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
-								{activeVideos.map((x) => {
+								{activeVideos.sort(sortVideos).map((x) => {
 									return <VideoCard key={x._id} id={x.youtube_id} title={x.title} />;
 								})}
 								{!isProduction && <AddVideo />}

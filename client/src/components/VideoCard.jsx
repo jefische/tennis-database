@@ -27,11 +27,11 @@ export default function VideoCard({ id, title, maxWidth }) {
 				aria-labelledby="video modal"
 				dialogClassName="modal-90w"
 			>
-				<Modal.Header closeButton>
-					<Modal.Title>{title}</Modal.Title>
+				<Modal.Header style={{ textAlign: "center" }} closeButton>
+					<Modal.Title className="col">{title}</Modal.Title>
 				</Modal.Header>
-				<Modal.Body style={{ height: "80vh" }} className="flex flex-col 2xl:flex-row gap-[20px]">
-					<div className="col" style={{ maxWidth: "1280px" }}>
+				<Modal.Body style={{ height: "80vh" }} className="flex flex-col items-center gap-[20px]">
+					<div className="col" style={{ maxWidth: "1280px", width: "100%" }}>
 						<iframe
 							height="100%"
 							width="100%"

@@ -78,11 +78,11 @@ export default function Players() {
 						</Carousel>
 					</div>
 
-					<section className="player-sections">Player Content</section>
-					<section className="player-sections">Player Content</section>
-					<section className="player-sections">Player Content</section>
-					<section className="player-sections">Player Content</section>
-					<section className="player-sections">Player Content</section>
+					<section className="player-sections"></section>
+					<section className="player-sections"></section>
+					<section className="player-sections"></section>
+					<section className="player-sections"></section>
+					<section className="player-sections"></section>
 				</main>
 			</div>
 		</>

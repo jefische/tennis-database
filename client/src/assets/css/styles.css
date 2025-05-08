@@ -18,6 +18,15 @@ select {
 	padding-top: 5px;
 }
 
+@keyframes mymove {
+	from {
+		top: -50%;
+	}
+	to {
+		top: 0;
+	}
+}
+
 .landing-page {
 	align-items: center;
 	display: flex;
@@ -25,23 +34,37 @@ select {
 	justify-content: center;
 	text-align: center;
 
-	h1 {
-		font-size: 32px;
-		font-weight: 800;
-		margin-bottom: 30px;
-	}
+	background-image: url("/bgs/wawrinka.jpg");
+	background-position: center;
+	background-size: cover;
 
-	p {
-		margin-bottom: 50px;
-	}
+	div {
+		animation: mymove 5s;
+		animation-fill-mode: forwards;
+		position: relative;
 
-	.archive-link {
-		color: #000;
-		background-color: #f9f9f9;
-		border: 1px solid transparent;
-		border-radius: 8px;
-		padding: 10px 20px;
-		text-decoration: none;
+		h1 {
+			font-size: 32px;
+			font-weight: 800;
+			margin-bottom: 30px;
+		}
+
+		p {
+			margin-bottom: 50px;
+		}
+
+		.archive-link {
+			color: #000;
+			background-color: #f9f9f9;
+			border: 1px solid transparent;
+			border-radius: 8px;
+			padding: 10px 20px;
+			text-decoration: none;
+		}
+
+		.archive-link:hover {
+			font-weight: 700;
+		}
 	}
 }
 
@@ -336,7 +359,6 @@ form.add-video {
 }
 
 .player-sections {
-	border: 1px solid;
 	font-size: 50px;
 	padding: 50px 0;
 	text-align: center;
