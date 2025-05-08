@@ -18,6 +18,39 @@ select {
 	padding-top: 5px;
 }
 
+.landing-page {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	text-align: center;
+
+	h1 {
+		font-size: 32px;
+		font-weight: 800;
+		margin-bottom: 30px;
+	}
+
+	p {
+		margin-bottom: 50px;
+	}
+
+	.archive-link {
+		color: #000;
+		background-color: #f9f9f9;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		padding: 10px 20px;
+		text-decoration: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.landing-page h1 {
+		font-size: 52px;
+	}
+}
+
 /*********** Sidebar filters **************/
 aside.sidebar {
 	border-right: 1px solid;
@@ -167,6 +200,28 @@ aside.sidebar {
 .modal-90w {
 	max-width: none !important;
 	width: 90% !important;
+}
+
+@media (min-width: 992px) {
+	.modal-30w {
+		max-width: none !important;
+		width: 30% !important;
+	}
+
+	.modal-50w {
+		max-width: none !important;
+		width: 50% !important;
+	}
+
+	.modal-75w {
+		max-width: none !important;
+		width: 75% !important;
+	}
+
+	.modal-90w {
+		max-width: none !important;
+		width: 90% !important;
+	}
 }
 
 form.add-video {

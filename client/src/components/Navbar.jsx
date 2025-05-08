@@ -1,10 +1,10 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const navigation = [
-	{ name: "Full Matches", href: "/", current: true },
+	{ name: "Full Matches", href: "/archive", current: true },
 	{ name: "Learn From the Pros", href: "/players", current: false },
 	{ name: "Draws", href: "/draws", current: false },
 	{ name: "FAQ", href: "/faq", current: false },
@@ -52,9 +52,9 @@ export default function Navbar() {
 						</DisclosureButton>
 					</div>
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-						<div className="flex shrink-0 items-center">
+						<Link to="/" className="flex shrink-0 items-center">
 							<img alt="Site Logo" src="/icons/tennis-ball-dark-96.png" className="h-8 w-auto" />
-						</div>
+						</Link>
 						<div className="hidden sm:ml-6 sm:block">
 							<div className="flex space-x-4">
 								{activeLink.map((item) => (

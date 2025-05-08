@@ -1,10 +1,12 @@
 import Carousel from "react-bootstrap/Carousel";
 import PlayerVideoCard from "../components/PlayerVideoCard";
+import Navbar from "../components/Navbar";
 
 export default function Players() {
 	const myWidth = "200px";
 	return (
 		<>
+			<Navbar />
 			<div className="body-container">
 				<main className="content-container bg-gray-custom">
 					<section className="hero-container">

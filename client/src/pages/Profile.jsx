@@ -1,4 +1,5 @@
 import CustomVideos from "../components/CustomVideos";
+import Navbar from "../components/Navbar";
 
 export default function Profile() {
 	const isProduction = import.meta.env.PROD;
@@ -6,6 +7,7 @@ export default function Profile() {
 
 	return (
 		<>
+			<Navbar />
 			{isProduction ? (
 				<h1 style={{ textAlign: "center", marginTop: "10%" }}>Profile page is under development</h1>
 			) : (

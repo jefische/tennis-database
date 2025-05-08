@@ -5,9 +5,6 @@ export default function YearFilters({ initFilters, formData, handleChange }) {
 	const [isActive, setIsActive] = useState(true);
 
 	const years = Object.entries(initFilters).filter((key, value) => {
-		console.log("test key: ");
-		if (key[1].title == "year") {
-		}
 		return key[1].title == "year";
 	});
 
