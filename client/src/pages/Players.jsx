@@ -53,6 +53,7 @@ export default function Players() {
 						</div>
 						<Carousel interval={null}>
 							<Carousel.Item>
+								<h2>Forehands</h2>
 								<div className="carousel-item-container">
 									<PlayerVideoCard id="97B2panmUvU" description="Wawrinka" maxWidth={myWidth} />
 									<PlayerVideoCard id="_cohjbquvwc" description="Wawrinka" maxWidth={myWidth} />
@@ -63,6 +64,7 @@ export default function Players() {
 								</div>
 							</Carousel.Item>
 							<Carousel.Item>
+								<h2>Backhands</h2>
 								<div className="carousel-item-container">
 									<PlayerVideoCard id="Re-8_POaRIw" description="Wawrinka" maxWidth={myWidth} />
 									<PlayerVideoCard id="SlgMvQQrYhg" description="Wawrinka" maxWidth={myWidth} />
@@ -73,7 +75,15 @@ export default function Players() {
 								</div>
 							</Carousel.Item>
 							<Carousel.Item>
-								<div className="carousel-item-container"></div>
+								<h2>Serves</h2>
+								<div className="carousel-item-container">
+									<PlayerVideoCard id="_xmJO_ZUtWU" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="Y1uhp9W0X9w" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="RcLbJzb5MdQ" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="58YBh2sUt7A" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="BLSFn33Z4IE" description="Wawrinka" maxWidth={myWidth} />
+									<PlayerVideoCard id="PSNl0Hdw1wM" description="Wawrinka" maxWidth={myWidth} />
+								</div>
 							</Carousel.Item>
 						</Carousel>
 					</div>

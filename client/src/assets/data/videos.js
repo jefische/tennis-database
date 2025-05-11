@@ -44,7 +44,7 @@ export const Videos = [
 		tournament: "US Open",
 		year: 2024,
 		round: "R128",
-		youtube_id: "JFwsha7u1IE?list=PL_2A0MxHOgda-1tlPgByVmCY2Ril6gMCQ",
+		youtube_id: "JFwsha7u1IE",
 		player1: "Caroline Wozniacki",
 		player2: "Nao Hibino",
 		title: "Caroline Wozniacki vs. Nao Hibino Full Match | 2024 US Open Round 1 (43 min)",

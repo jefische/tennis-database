@@ -81,9 +81,17 @@ export function Archive() {
 							<h1 className="text-5xl py-[50px]">Welcome to the Match Archive</h1>
 							<div className="flex flex-wrap gap-[25px] mb-[50px]">
 								{activeVideos.sort(sortVideos).map((x) => {
-									return <VideoCard key={x._id} id={x.youtube_id} title={x.title} />;
+									return (
+										<VideoCard
+											key={x._id}
+											id={x.youtube_id}
+											title={x.title}
+											setAllVideos={setAllVideos}
+											setVideos={setVideos}
+										/>
+									);
 								})}
-								{!isProduction && <AddVideo />}
+								{!isProduction && <AddVideo setAllVideos={setAllVideos} setVideos={setVideos} />}
 							</div>
 						</div>
 					</main>

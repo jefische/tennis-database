@@ -49,7 +49,7 @@ app.get("/api/items", async (req, res) => {
 	}
 });
 
-app.post("/data/videos", async (req, res) => {
+app.post("/api/add", async (req, res) => {
 	console.log("posting video data....");
 	var videoEntry = req.body;
 
@@ -66,7 +66,8 @@ app.post("/data/videos", async (req, res) => {
 		});
 
 		await userEntry.save();
-		res.sendStatus(200);
+		res.redirect("/api/items"); // reload all videos from MongoDB
+		// res.sendStatus(200);
 	} catch (error) {
 		if (error.code === 11000) {
 			// Duplicate key error
@@ -86,6 +87,20 @@ app.post("/data/videos", async (req, res) => {
 	// 	player2: videoEntry.player2,
 	// 	title: videoEntry.title,
 	// });
+});
+
+// Delete a record
+app.get("/api/delete/:youtubeId", async (req, res) => {
+	// var count = await TVideo.countDocuments({});
+	let theID = req.params.youtubeId.replace("youtubeid=", "");
+	var dVid = await TVideo.findOne({ youtube_id: theID });
+
+	console.log("req.params is: " + theID);
+	console.log("find one returns: ");
+	console.log(dVid);
+	await TVideo.findOneAndDelete({ youtube_id: theID });
+
+	res.redirect("/api/items"); // reload all videos from MongoDB
 });
 
 // Serve React build only in production

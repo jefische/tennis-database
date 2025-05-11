@@ -156,6 +156,8 @@ aside.sidebar {
 	/* position: relative; */
 }
 
+/*********** Archives section **************/
+
 .content-container {
 	height: 100%;
 	overflow: auto;
@@ -166,7 +168,7 @@ aside.sidebar {
 	height: 235px;
 	margin-bottom: 40px;
 	max-width: 370px;
-	/* min-width: 350px; */
+	position: relative;
 	transition: all 0.5s ease-in-out;
 	width: 100%;
 
@@ -176,6 +178,18 @@ aside.sidebar {
 		border-radius: 10px;
 		height: 235px;
 	}
+
+	.dropstart {
+		cursor: pointer;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+
+		a.dropdown-item:hover {
+			font-weight: 700;
+		}
+	}
+
 	.card-add-new {
 		align-items: center;
 		background-color: #ccc;
@@ -350,12 +364,19 @@ form.add-video {
 	}
 }
 
-.carousel-item-container {
-	display: flex;
-	gap: 30px;
-	justify-content: center;
-	padding-top: 30px;
-	padding-bottom: 30px;
+.carousel-item {
+	h2 {
+		padding-left: 100px;
+		padding-top: 50px;
+	}
+
+	.carousel-item-container {
+		display: flex;
+		gap: 30px;
+		justify-content: center;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
 }
 
 .player-sections {

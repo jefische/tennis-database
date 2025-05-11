@@ -1,13 +1,13 @@
 import { useState, useRef, forwardRef } from "react";
 
 const fData = {
-	tournament: "",
-	year: 2025,
-	youtubeid: "",
-	round: "",
-	player1: "",
-	player2: "",
-	title: "",
+	tournament: "US Open",
+	year: 2024,
+	youtubeid: "JFwsha7u1IE",
+	round: "1st",
+	player1: "Caroline Wozniacki",
+	player2: "Nao Hibino",
+	title: "Caroline Wozniacki vs. Nao Hibino Full Match | 2024 US Open Round 1 (43 min)",
 };
 
 export default function VideoForm({ onFormSubmit }) {
@@ -15,9 +15,6 @@ export default function VideoForm({ onFormSubmit }) {
 	const [formValidated, setValidation] = useState(false);
 	const [urlValidated, setURLValidation] = useState(true);
 	const formRef = useRef(null);
-
-	const isProduction = process.env.NODE_ENV === "production";
-	const baseURL = isProduction ? "https://tennis-database.fly.dev" : "http://localhost:8080";
 
 	async function saveVideo(e) {
 		e.preventDefault();
@@ -29,7 +26,7 @@ export default function VideoForm({ onFormSubmit }) {
 			setURLValidation(true);
 			setValidation(true);
 		} else {
-			fetch(`${baseURL}/data/videos`, {
+			fetch(`http://localhost:8080/api/add`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -46,8 +43,9 @@ export default function VideoForm({ onFormSubmit }) {
 							throw errorData;
 						}
 					} else {
+						const newData = await response.json();
 						setValidation(true);
-						onFormSubmit(); // Calls parent function to update state
+						onFormSubmit(newData); // Calls parent function to update state
 					}
 				})
 				.catch((error) => console.error("Error:", error)); // Note this will only catch like server timeout errors,
@@ -110,7 +108,7 @@ export default function VideoForm({ onFormSubmit }) {
 						onChange={handleChange}
 						required
 					/>
-					<div className="invalid-feedback">Please enter a year.</div>
+					<div className="invalid-feedback">Please enter a year between 1970-2025.</div>
 				</div>
 			</div>
 
@@ -138,14 +136,7 @@ export default function VideoForm({ onFormSubmit }) {
 					<label className="form-label" htmlFor="round">
 						Round
 					</label>
-					<select
-						className="form-select"
-						name="round"
-						id="round"
-						value={formData.round}
-						onChange={handleChange}
-						required
-					>
+					<select className="form-select" name="round" id="round" value={formData.round} onChange={handleChange} required>
 						<option disabled value="">
 							Choose...
 						</option>

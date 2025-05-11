@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import VideoForm from "./VideoForm";
 import { Fragment, useState, useEffect } from "react";
 
-export default function AddVideo() {
+export default function AddVideo({ setAllVideos, setVideos }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	// The Parent (Modal Component) holds the isSubmitted state.
 	// The Child (Form Component) triggers setIsSubmitted(true) when the form is submitted.
@@ -12,6 +12,12 @@ export default function AddVideo() {
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
+
+	function handleSubmit(data) {
+		setVideos(data);
+		setAllVideos(data);
+		setIsSubmitted(true);
+	}
 
 	useEffect(() => {
 		if (isSubmitted) {
@@ -27,12 +33,7 @@ export default function AddVideo() {
 		<Fragment>
 			<div className="card-cover">
 				<div className="header-background card-add-new" onClick={openModal}>
-					<img
-						src="/icons/add-100.png"
-						alt="add new video icon"
-						width={"100px"}
-						height={"100px"}
-					/>
+					<img src="/icons/add-100.png" alt="add new video icon" width={"100px"} height={"100px"} />
 				</div>
 			</div>
 			{isSubmitted ? (
@@ -61,7 +62,7 @@ export default function AddVideo() {
 						</Modal.Header>
 						<Modal.Body>
 							<div className="flex justify-center" style={{ maxWidth: "1280px" }}>
-								<VideoForm onFormSubmit={() => setIsSubmitted(true)} />
+								<VideoForm onFormSubmit={handleSubmit} />
 							</div>
 						</Modal.Body>
 						<Modal.Footer>

@@ -18,16 +18,18 @@ export default function YearFilters({ initFilters, formData, handleChange }) {
 				<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
 					<ul className="filter">
 						{years.map((x) => {
+							let name = x[0];
+							let count = x[1].count;
 							return (
-								<li key={x[0]}>
+								<li key={name}>
 									<input
 										type="checkbox"
-										name={x[0]}
-										checked={Object.keys(formData).length === 0 ? true : formData[x[0]].include}
+										name={name}
+										checked={formData[name] == undefined ? true : formData[name].include}
 										onChange={handleChange}
 									/>
-									<label htmlFor={x[0]}>
-										{x[0]} ({x[1].count})
+									<label htmlFor={name}>
+										{name} ({count})
 									</label>
 								</li>
 							);

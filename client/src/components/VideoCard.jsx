@@ -1,12 +1,36 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { Fragment, useState } from "react";
 
-export default function VideoCard({ id, title, maxWidth }) {
+export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
+
+	const isProduction = import.meta.env.PROD;
+
+	function handleDelete() {
+		const params = new URLSearchParams(); // This class encodes the data before appending to URL query string
+		params.append("youtubeid", id);
+
+		fetch(`http://localhost:8080/api/delete/${params}`)
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error(`HTTP error! status: ${res.status}`);
+				}
+				return res.json();
+			})
+			.then((data) => {
+				setAllVideos(data);
+				setVideos(data);
+			})
+			.catch((error) => {
+				console.error("There was a problem with the fetch operation: ", error);
+			});
+	}
 	return (
 		<Fragment>
 			<div className="card-cover" style={{ maxWidth: maxWidth }}>
@@ -17,6 +41,23 @@ export default function VideoCard({ id, title, maxWidth }) {
 						backgroundImage: `url(http://img.youtube.com/vi/${id}/0.jpg)`,
 					}}
 				></div>
+				{!isProduction && (
+					<DropdownButton drop="start">
+						<Dropdown.Item href="#" onClick={handleDelete}>
+							Delete Record
+						</Dropdown.Item>
+					</DropdownButton>
+				)}
+				{/* <Dropdown drop="start">
+					<Dropdown.Toggle id="dropdown-basic" variant="light-subtle">
+						<img className="video-settings" src="/icons/ellipsis-48.png" alt="Settings" />
+					</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<Dropdown.Item href="#" onClick={() => console.log("testing dropdown")}>
+							Delete Record
+						</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown> */}
 				<p className="card-title">{title}</p>
 			</div>
 			<Modal

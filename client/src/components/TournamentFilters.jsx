@@ -25,7 +25,7 @@ export default function TournamentFilters({ initFilters, formData, handleChange 
 										<input
 											type="checkbox"
 											name={name}
-											checked={Object.keys(formData).length === 0 ? true : formData[name].include}
+											checked={formData[name] == undefined ? true : formData[name].include}
 											onChange={handleChange}
 										/>
 										<label htmlFor={name}>
