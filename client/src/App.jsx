@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Archive } from "./pages/Archive";
 import Home from "./pages/Home";
 import Players from "./pages/Players";
-import Navbar from "./components/Navbar";
 import Draws from "./pages/Draws";
 import FAQ from "./pages/FAQ";
 import Profile from "./pages/Profile";
