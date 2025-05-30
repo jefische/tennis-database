@@ -48,16 +48,6 @@ export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos
 						</Dropdown.Item>
 					</DropdownButton>
 				)}
-				{/* <Dropdown drop="start">
-					<Dropdown.Toggle id="dropdown-basic" variant="light-subtle">
-						<img className="video-settings" src="/icons/ellipsis-48.png" alt="Settings" />
-					</Dropdown.Toggle>
-					<Dropdown.Menu>
-						<Dropdown.Item href="#" onClick={() => console.log("testing dropdown")}>
-							Delete Record
-						</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown> */}
 				<p className="card-title">{title}</p>
 			</div>
 			<Modal

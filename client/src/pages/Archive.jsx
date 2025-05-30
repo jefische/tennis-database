@@ -78,8 +78,11 @@ export function Archive() {
 					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={initialData} />
 					<main>
 						<div className="content-container px-[50px]">
-							<h1 className="text-5xl py-[50px]">Welcome to the Match Archive</h1>
-							<div className="flex flex-wrap gap-[25px] mb-[50px]">
+							<div className="header-container py-[50px]">
+								<h1>Welcome to the Match Archive</h1>
+								<input className="search-bar" type="text" placeholder="Search by Player" />
+							</div>
+							<div className="video-container mb-[50px]">
 								{activeVideos.sort(sortVideos).map((x) => {
 									return (
 										<VideoCard

@@ -18,6 +18,27 @@ select {
 	padding-top: 5px;
 }
 
+/*********** backgrounds **************/
+
+.bg-gray-custom {
+	background-color: rgb(33, 37, 41);
+}
+
+.body-container {
+	/* Setting height to 100% here won't allow the content to be fully visible when scrolling to the bottom of the page.
+	   I believe this is because overflow is set to hidden on the <html> tag which permanently fixes the height of the display
+	   to a pixel value. Then setting the body container to the same height (100%) means that the body should take up the
+	   full screen including the navbar. Then with overflow auto/scroll on the content container this seems to cause the body
+	   container to cut off the bottom of the element. I believe another way to look at this is, once scrolling the content
+	   container to the bottom, if the height is (100% - the navbar height), then the full element will fit in the viewport WITH the navbar.
+	   If the height is 100% (full viewport size), then both the content container and navbar cannot fully be visible on the screen with a fixed html height.*/
+	height: calc(100% - 64px);
+	/* Not currently using any absolute positioning, so I don't believe we need position relative here */
+	/* position: relative; */
+}
+
+/* Landing Page ************************************************************/
+
 @keyframes mymove {
 	from {
 		top: -50%;
@@ -39,7 +60,7 @@ select {
 	background-size: cover;
 
 	div {
-		animation: mymove 5s;
+		animation: mymove 2s;
 		animation-fill-mode: forwards;
 		position: relative;
 
@@ -73,6 +94,8 @@ select {
 		font-size: 52px;
 	}
 }
+
+/* Archives Section ************************************************************/
 
 /*********** Sidebar filters **************/
 aside.sidebar {
@@ -131,38 +154,42 @@ aside.sidebar {
 		display: flex;
 	}
 }
-/*********** backgrounds **************/
-
-.bg-gray-custom {
-	background-color: rgb(33, 37, 41);
-}
-.hero-background {
-	/* background-image: url("./images/bgs/big3_v2.jpg"); */
-	/* background-position: center; */
-	/* background-size: cover; */
-	/* height: 70vh; */
-}
-
-.body-container {
-	/* Setting height to 100% here won't allow the content to be fully visible when scrolling to the bottom of the page.
-	   I believe this is because overflow is set to hidden on the <html> tag which permanently fixes the height of the display
-	   to a pixel value. Then setting the body container to the same height (100%) means that the body should take up the
-	   full screen including the navbar. Then with overflow auto/scroll on the content container this seems to cause the body
-	   container to cut off the bottom of the element. I believe another way to look at this is, once scrolling the content
-	   container to the bottom, if the height is (100% - the navbar height), then the full element will fit in the viewport WITH the navbar.
-	   If the height is 100% (full viewport size), then both the content container and navbar cannot fully be visible on the screen with a fixed html height.*/
-	height: calc(100% - 64px);
-	/* Not currently using any absolute positioning, so I don't believe we need position relative here */
-	/* position: relative; */
-}
-
-/*********** Archives section **************/
 
 .content-container {
 	height: 100%;
 	overflow: auto;
 }
 
+/*********** Thumbnail cards **************/
+
+main {
+	width: 100%;
+	.content-container {
+		.header-container {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			gap: 50px;
+
+			h1 {
+				font-size: 40px;
+				text-align: center;
+			}
+			.search-bar {
+				background-color: #fff;
+				color: #000;
+				height: 50px;
+				min-width: 70%;
+			}
+		}
+		.video-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 370px));
+			gap: 25px;
+			justify-content: center;
+		}
+	}
+}
 .card-cover {
 	cursor: pointer;
 	height: 235px;
@@ -218,6 +245,7 @@ aside.sidebar {
 		-1px 1px 0 #000,
 		1px 1px 0 #000; */
 }
+/*********** Modals **************/
 
 .modal-30w {
 	max-width: none !important;
@@ -261,6 +289,8 @@ aside.sidebar {
 	}
 }
 
+/*********** Form Add **************/
+
 form.add-video {
 	display: flex;
 	flex-direction: column;
@@ -293,6 +323,38 @@ form.add-video {
 		}
 	}
 }
+
+/* Archives section media queries */
+
+@media (min-width: 768px) {
+	main {
+		width: calc(100% - 245px);
+	}
+}
+
+@media (min-width: 1505px) {
+	main .content-container {
+		.header-container {
+			flex-direction: row;
+			gap: 100px;
+			justify-content: center;
+
+			.search-bar {
+				flex-basis: 500px;
+				min-width: 0;
+			}
+		}
+	}
+}
+
+@media (min-width: 1900px) {
+	main .content-container {
+		.header-container {
+			justify-content: start;
+		}
+	}
+}
+
 /* Learn From the Pros Section ************************************************************/
 
 .hero-container {
