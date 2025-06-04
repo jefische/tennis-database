@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 export function Archive() {
 	const [activeVideos, setVideos] = useState([]);
 	const [allVideos, setAllVideos] = useState([]);
+	const [query, setQuery] = useState("");
+
 	// const isProduction = import.meta.env.VITE_NODE_ENV === "production";
 	const isProduction = import.meta.env.PROD;
 	const baseURL = isProduction ? "https://tennis-database.fly.dev" : "http://localhost:8080";
@@ -69,6 +71,26 @@ export function Archive() {
 		}
 	}
 
+	function filterItems(items, query) {
+		query = query.toLowerCase();
+
+		return items.filter((item) => {
+			console.log(item.title);
+			// return item.player1.split(" ").some((name) => name.toLowerCase().startsWith(query));
+			return item.title.toLowerCase().includes(query);
+		});
+	}
+	let results = filterItems(allVideos, query);
+
+	function handleChange(e) {
+		setQuery(e.target.value);
+		if (e.target.value == "") {
+			setVideos(allVideos);
+		} else {
+			setVideos(results);
+		}
+	}
+
 	return (
 		<>
 			<Navbar />
@@ -80,7 +102,13 @@ export function Archive() {
 						<div className="content-container px-[50px]">
 							<div className="header-container py-[50px]">
 								<h1>Welcome to the Match Archive</h1>
-								<input className="search-bar" type="text" placeholder="Search by Player" />
+								<input
+									className="search-bar"
+									type="text"
+									placeholder="Search by Player"
+									value={query}
+									onChange={handleChange}
+								/>
 							</div>
 							<div className="video-container mb-[50px]">
 								{activeVideos.sort(sortVideos).map((x) => {
