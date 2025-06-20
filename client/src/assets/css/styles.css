@@ -162,32 +162,30 @@ aside.sidebar {
 
 /*********** Thumbnail cards **************/
 
-main {
+main.content-container {
 	width: 100%;
-	.content-container {
-		.header-container {
-			align-items: center;
-			display: flex;
-			flex-direction: column;
-			gap: 50px;
+	.header-container {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
 
-			h1 {
-				font-size: 40px;
-				text-align: center;
-			}
-			.search-bar {
-				background-color: #fff;
-				color: #000;
-				height: 50px;
-				min-width: 70%;
-			}
+		h1 {
+			font-size: 40px;
+			text-align: center;
 		}
-		.video-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 370px));
-			gap: 25px;
-			justify-content: center;
+		.search-bar {
+			background-color: #fff;
+			color: #000;
+			height: 50px;
+			min-width: 70%;
 		}
+	}
+	.video-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 370px));
+		gap: 25px;
+		justify-content: center;
 	}
 }
 .card-cover {
@@ -327,13 +325,13 @@ form.add-video {
 /* Archives section media queries */
 
 @media (min-width: 768px) {
-	main {
+	main.archives {
 		width: calc(100% - 245px);
 	}
 }
 
 @media (min-width: 1505px) {
-	main .content-container {
+	main.content-container {
 		.header-container {
 			flex-direction: row;
 			gap: 100px;
@@ -348,7 +346,7 @@ form.add-video {
 }
 
 @media (min-width: 1900px) {
-	main .content-container {
+	main.content-container {
 		.header-container {
 			justify-content: start;
 		}

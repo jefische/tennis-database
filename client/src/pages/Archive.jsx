@@ -98,32 +98,30 @@ export function Archive() {
 			<div className="body-container">
 				<section className="flex bg-gray-custom" style={{ height: "100%" }}>
 					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={initialData} />
-					<main>
-						<div className="content-container px-[50px]">
-							<div className="header-container py-[50px]">
-								<h1>Welcome to the Match Archive</h1>
-								<input
-									className="search-bar"
-									type="text"
-									placeholder="Search by Player"
-									value={query}
-									onChange={handleChange}
-								/>
-							</div>
-							<div className="video-container mb-[50px]">
-								{activeVideos.sort(sortVideos).map((x) => {
-									return (
-										<VideoCard
-											key={x._id}
-											id={x.youtube_id}
-											title={x.title}
-											setAllVideos={setAllVideos}
-											setVideos={setVideos}
-										/>
-									);
-								})}
-								{!isProduction && <AddVideo setAllVideos={setAllVideos} setVideos={setVideos} />}
-							</div>
+					<main className="archives content-container px-[50px]">
+						<div className="header-container py-[50px]">
+							<h1>Welcome to the Match Archive</h1>
+							<input
+								className="search-bar"
+								type="text"
+								placeholder="Search by Player"
+								value={query}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="video-container mb-[50px]">
+							{activeVideos.sort(sortVideos).map((x) => {
+								return (
+									<VideoCard
+										key={x._id}
+										id={x.youtube_id}
+										title={x.title}
+										setAllVideos={setAllVideos}
+										setVideos={setVideos}
+									/>
+								);
+							})}
+							{!isProduction && <AddVideo setAllVideos={setAllVideos} setVideos={setVideos} />}
 						</div>
 					</main>
 				</section>
