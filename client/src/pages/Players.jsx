@@ -9,7 +9,9 @@ export default function Players() {
 		<>
 			<Navbar />
 			{isProduction ? (
-				<h1 style={{ textAlign: "center", marginTop: "10%" }}>Player page is under development</h1>
+				<div className="body-container bg-gray-custom">
+					<h1 style={{ textAlign: "center", paddingTop: "10%", color: "#fff" }}>Player page is under development</h1>
+				</div>
 			) : (
 				<div className="body-container">
 					<main className="content-container bg-gray-custom">
