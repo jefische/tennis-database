@@ -49,6 +49,8 @@ export function Archive() {
 		initFilters[key] = initialData[key];
 	});
 
+	console.log(initFilters);
+
 	useEffect(() => {
 		fetch(`${baseURL}/api/items`)
 			.then((response) => response.json())

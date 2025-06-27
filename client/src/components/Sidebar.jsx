@@ -11,8 +11,8 @@ let initFilters = {
 		count: 3,
 		include: true,
 	},
-	2025: { title: "year", include: true },
-	2024: { title: "year", include: false },
+	2025: { title: "year", include: true, count: 1 },
+	2024: { title: "year", include: false, count: 3 },
 }; 
 */
 // allVideos data structure for reference

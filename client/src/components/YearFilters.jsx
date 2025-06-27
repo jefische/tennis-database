@@ -5,7 +5,11 @@ export default function YearFilters({ formData, setFormData }) {
 	const [isActive, setIsActive] = useState(true);
 	const [select, setSelect] = useState(true);
 
+	let numYears = 0;
 	const years = Object.entries(formData).filter(([key, val]) => {
+		if (val.title == "year") {
+			numYears += val.count;
+		}
 		return val.title == "year";
 	});
 
@@ -46,7 +50,7 @@ export default function YearFilters({ formData, setFormData }) {
 					<ul className="filter">
 						<li>
 							<input type="checkbox" checked={select} onChange={selectAll} />
-							<label htmlFor="selectAll">Select All ({years.length})</label>
+							<label htmlFor="selectAll">Select All ({numYears})</label>
 						</li>
 						{years.map(([key, val]) => {
 							let name = key;

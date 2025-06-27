@@ -3,12 +3,38 @@ import Modal from "react-bootstrap/Modal";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Fragment, useState } from "react";
+import EditModal from "./EditModal";
 
 export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos }) {
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [editModal, setEditModal] = useState(false);
+	const [editData, setEditData] = useState({});
 
 	const openModal = () => setIsOpen(true);
 	const closeModal = () => setIsOpen(false);
+
+	const openEditModal = () => {
+		// Need to fetch data here
+		const params = new URLSearchParams(); // This class encodes the data before appending to URL query string
+		params.append("youtubeid", id);
+
+		fetch(`http://localhost:8080/api/edit/${params}`)
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error(`HTTP error! status: ${res.status}`);
+				}
+				return res.json();
+			})
+			.then((data) => {
+				setEditModal(true);
+				setEditData(data);
+				console.log(data);
+			})
+			.catch((error) => {
+				console.error("There was a problem with the fetch operation: ", error);
+			});
+	};
+	const closeEditModal = () => setEditModal(false);
 
 	const isProduction = import.meta.env.PROD;
 
@@ -31,6 +57,7 @@ export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos
 				console.error("There was a problem with the fetch operation: ", error);
 			});
 	}
+
 	return (
 		<Fragment>
 			<div className="card-cover" style={{ maxWidth: maxWidth }}>
@@ -46,6 +73,10 @@ export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos
 						<Dropdown.Item href="#" onClick={handleDelete}>
 							Delete Record
 						</Dropdown.Item>
+						<Dropdown.Item href="#" onClick={openEditModal}>
+							Edit Record
+						</Dropdown.Item>
+						<EditModal editModalOpen={editModal} closeEditModal={closeEditModal} editData={editData} />
 					</DropdownButton>
 				)}
 				<p className="card-title">{title}</p>

@@ -89,6 +89,18 @@ app.post("/api/add", async (req, res) => {
 	// });
 });
 
+// Edit a record
+app.get("/api/edit/:youtubeId", async (req, res) => {
+	try {
+		const theID = req.params.youtubeId.replace("youtubeid=", "");
+		const dVid = await TVideo.findOne({ youtube_id: theID });
+		console.log(dVid);
+		res.json(dVid);
+	} catch (error) {
+		res.status(500).json({ message: "Error fetching data", error });
+	}
+});
+
 // Delete a record
 app.get("/api/delete/:youtubeId", async (req, res) => {
 	// var count = await TVideo.countDocuments({});
