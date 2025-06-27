@@ -152,6 +152,7 @@ aside.sidebar {
 @media (min-width: 768px) {
 	aside.sidebar {
 		display: flex;
+		overflow-y: scroll;
 	}
 }
 

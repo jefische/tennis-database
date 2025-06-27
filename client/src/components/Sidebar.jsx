@@ -37,25 +37,18 @@ export default function Sidebar({ allVideos, setVideos, initFilters }) {
 	// formData is used to manage the checkboxes and pass them to form submit for ytVideo filtering and rendering in Home.jsx
 	const [formData, setFormData] = useState(initFilters);
 
-	const handleChange = (e) => {
-		const { name, checked } = e.target;
-		setFormData({
-			...formData,
-			[name]: {
-				...formData[name],
-				include: checked,
-			},
-		});
-	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let filterVideos = [];
+
+		// First filter formData for the years to include
 		const yearsToInclude = Object.entries(formData)
-			.filter((key, val) => {
-				return key[1].title == "year" && key[1].include == true;
+			.filter(([key, val]) => {
+				return val.title == "year" && val.include == true;
 			})
 			.map(([key, value]) => Number(key));
+
+		// Second, filter formData for tournaments to include and only include the years selected from the first filter above.
 		for (var key in formData) {
 			if (formData[key].include == true && formData[key].title !== "year") {
 				const temp = allVideos.filter((x) => x.tournament == formData[key].title && yearsToInclude.includes(x.year));
@@ -76,9 +69,9 @@ export default function Sidebar({ allVideos, setVideos, initFilters }) {
 		<aside className="sidebar">
 			<form action="" className="w-[180px]" onSubmit={handleSubmit}>
 				Filter Match Results
-				<TournamentFilters initFilters={initFilters} formData={formData} handleChange={handleChange} />
-				<YearFilters initFilters={initFilters} formData={formData} handleChange={handleChange} />
-				<button className="applyFilter btn btn-primary mt-4" type="submit">
+				<TournamentFilters formData={formData} setFormData={setFormData} />
+				<YearFilters formData={formData} setFormData={setFormData} />
+				<button className="applyFilter btn btn-primary my-1" type="submit">
 					Apply Filters
 				</button>
 			</form>

@@ -38,8 +38,16 @@ export function Archive() {
 		} else {
 			acc[x.year].count++;
 		}
+
 		return acc;
 	}, {});
+
+	// Sort the initial data object by keys
+	const keys = Object.keys(initialData).sort();
+	const initFilters = {};
+	keys.forEach((key) => {
+		initFilters[key] = initialData[key];
+	});
 
 	useEffect(() => {
 		fetch(`${baseURL}/api/items`)
@@ -75,7 +83,7 @@ export function Archive() {
 		query = query.toLowerCase();
 
 		return items.filter((item) => {
-			console.log(item.title);
+			// console.log(item.title);
 			// return item.player1.split(" ").some((name) => name.toLowerCase().startsWith(query));
 			return item.title.toLowerCase().includes(query);
 		});
@@ -97,7 +105,7 @@ export function Archive() {
 
 			<div className="body-container">
 				<section className="flex bg-gray-custom" style={{ height: "100%" }}>
-					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={initialData} />
+					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={initFilters} />
 					<main className="archives content-container px-[50px]">
 						<div className="header-container py-[50px]">
 							<h1>Welcome to the Match Archive</h1>

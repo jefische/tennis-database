@@ -1,12 +1,39 @@
 import { useState } from "react";
 
-export default function YearFilters({ initFilters, formData, handleChange }) {
+export default function YearFilters({ formData, setFormData }) {
 	// isActive state is used to manage the accordion dropdown filters in the sidebar
 	const [isActive, setIsActive] = useState(true);
+	const [select, setSelect] = useState(true);
 
-	const years = Object.entries(initFilters).filter((key, value) => {
-		return key[1].title == "year";
+	const years = Object.entries(formData).filter(([key, val]) => {
+		return val.title == "year";
 	});
+
+	function selectAll() {
+		setSelect(!select);
+		setFormData((prev) => {
+			const updated = Object.fromEntries(
+				Object.entries(prev).map(([key, val]) => {
+					if (val.title == "year") return [key, { ...val, include: !select }];
+					return [key, val];
+				}),
+			);
+			return updated;
+		});
+	}
+
+	const handleChange = (e) => {
+		const { name, checked } = e.target;
+		setFormData({
+			...formData,
+			[name]: {
+				...formData[name],
+				include: checked,
+			},
+		});
+		// If a year is uncheck, uncheck the select all input field
+		if (checked == false) setSelect(false);
+	};
 
 	return (
 		<div className="accordion-rjs">
@@ -17,9 +44,13 @@ export default function YearFilters({ initFilters, formData, handleChange }) {
 				</div>
 				<div className={`accordion-content-rjs ${isActive ? "block" : "hidden"}`}>
 					<ul className="filter">
-						{years.map((x) => {
-							let name = x[0];
-							let count = x[1].count;
+						<li>
+							<input type="checkbox" checked={select} onChange={selectAll} />
+							<label htmlFor="selectAll">Select All ({years.length})</label>
+						</li>
+						{years.map(([key, val]) => {
+							let name = key;
+							let count = val.count;
 							return (
 								<li key={name}>
 									<input
