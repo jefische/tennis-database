@@ -59,7 +59,7 @@ app.post("/api/add", async (req, res) => {
 			tournament: videoEntry.tournament,
 			year: videoEntry.year,
 			round: videoEntry.round,
-			youtube_id: videoEntry.youtubeid,
+			youtube_id: videoEntry.youtube_id,
 			player1: videoEntry.player1,
 			player2: videoEntry.player2,
 			title: videoEntry.title,
@@ -74,7 +74,7 @@ app.post("/api/add", async (req, res) => {
 			res.status(400).json({ status: 400, error: "This id is already registered." });
 		} else {
 			// Other errors
-			res.status(500).json({ error: "An error occurred." });
+			res.status(500).json({ error: error.message });
 		}
 	}
 
@@ -89,7 +89,7 @@ app.post("/api/add", async (req, res) => {
 	// });
 });
 
-// Edit a record
+// Load record to Edit
 app.get("/api/edit/:youtubeId", async (req, res) => {
 	try {
 		const theID = req.params.youtubeId.replace("youtubeid=", "");
@@ -98,6 +98,37 @@ app.get("/api/edit/:youtubeId", async (req, res) => {
 		res.json(dVid);
 	} catch (error) {
 		res.status(500).json({ message: "Error fetching data", error });
+	}
+});
+
+// Edit the loaded record
+app.post("/api/edit", async (req, res) => {
+	var videoEntry = req.body;
+	try {
+		var dVid = await TVideo.findOne({ youtube_id: videoEntry.youtube_id });
+		console.log(dVid);
+		if (dVid) {
+			dVid.tournament = videoEntry.tournament;
+			dVid.year = videoEntry.year;
+			dVid.round = videoEntry.round;
+			dVid.youtube_id = videoEntry.youtube_id;
+			dVid.player1 = videoEntry.player1;
+			dVid.player2 = videoEntry.player2;
+			dVid.title = videoEntry.title;
+
+			await dVid.save();
+		} else {
+			console.log("Document not found");
+		}
+		res.redirect("/api/items"); // reload all videos from MongoDB
+	} catch (error) {
+		if (error.code === 11000) {
+			// Duplicate key error
+			res.status(400).json({ status: 400, error: "This id is already registered." });
+		} else {
+			// Other errors
+			res.status(500).json({ error: error.message });
+		}
 	}
 });
 

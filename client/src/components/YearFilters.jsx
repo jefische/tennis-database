@@ -35,7 +35,7 @@ export default function YearFilters({ formData, setFormData }) {
 				include: checked,
 			},
 		});
-		// If a year is uncheck, uncheck the select all input field
+		// If any individual year is unchecked, uncheck the select all input field
 		if (checked == false) setSelect(false);
 	};
 

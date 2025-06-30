@@ -1,14 +1,4 @@
-import { useState, useRef, forwardRef } from "react";
-
-const fData = {
-	tournament: "US Open",
-	year: 2024,
-	youtubeid: "JFwsha7u1IE",
-	round: "1st",
-	player1: "Caroline Wozniacki",
-	player2: "Nao Hibino",
-	title: "Caroline Wozniacki vs. Nao Hibino Full Match | 2024 US Open Round 1 (43 min)",
-};
+import { useState, useRef } from "react";
 
 export default function VideoEditForm({ onFormSubmit, editData }) {
 	const [formData, setFormData] = useState(editData);
@@ -16,20 +6,18 @@ export default function VideoEditForm({ onFormSubmit, editData }) {
 	const [urlValidated, setURLValidation] = useState(true);
 	const formRef = useRef(null);
 
-	console.log("printing formData from Video Edit Modal");
-	console.log(formData);
+	// console.log("printing formData from Video Edit Modal");
+	// console.log(formData);
 
 	async function saveVideo(e) {
 		e.preventDefault();
-		// const formData = new FormData(formRef.current);
-		// const formData = new FormData(e.target);
 		if (formRef.current.checkValidity() == false) {
 			// checkValidity() is a brower API that's auto executed on form submit. preventDefault() will stop this behavior.
 			// you still want to include preventDefault() if checkValidity() is false to block submission. checkValidity() only checks constraints.
 			setURLValidation(true);
 			setValidation(true);
 		} else {
-			fetch(`http://localhost:8080/api/add`, {
+			fetch(`http://localhost:8080/api/edit`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -48,7 +36,7 @@ export default function VideoEditForm({ onFormSubmit, editData }) {
 					} else {
 						const newData = await response.json();
 						setValidation(true);
-						onFormSubmit(newData); // Calls parent function to update state
+						onFormSubmit(newData); // Calls parent function to reload video state
 					}
 				})
 				.catch((error) => console.error("Error:", error)); // Note this will only catch like server timeout errors,
@@ -117,13 +105,13 @@ export default function VideoEditForm({ onFormSubmit, editData }) {
 
 			<div className="row">
 				<div className="col">
-					<label className="form-label" htmlFor="youtubeid">
+					<label className="form-label" htmlFor="youtube_id">
 						Youtube ID
 					</label>
 					<input
 						className="form-control"
 						type="text"
-						name="youtubeid"
+						name="youtube_id"
 						required
 						placeholder="e.g. https://www.youtube.com/embed/{id}"
 						value={formData.youtube_id}

@@ -28,7 +28,6 @@ export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos
 			.then((data) => {
 				setEditModal(true);
 				setEditData(data);
-				console.log(data);
 			})
 			.catch((error) => {
 				console.error("There was a problem with the fetch operation: ", error);
@@ -76,7 +75,13 @@ export default function VideoCard({ id, title, maxWidth, setAllVideos, setVideos
 						<Dropdown.Item href="#" onClick={openEditModal}>
 							Edit Record
 						</Dropdown.Item>
-						<EditModal editModalOpen={editModal} closeEditModal={closeEditModal} editData={editData} />
+						<EditModal
+							editModalOpen={editModal}
+							closeEditModal={closeEditModal}
+							editData={editData}
+							setAllVideos={setAllVideos}
+							setVideos={setVideos}
+						/>
 					</DropdownButton>
 				)}
 				<p className="card-title">{title}</p>

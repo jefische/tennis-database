@@ -35,7 +35,7 @@ export default function TournamentFilters({ formData, setFormData }) {
 				include: checked,
 			},
 		});
-		// If a tournament is unchecked, uncheck the select all input field
+		// If any tournament is unchecked, uncheck the select all input field
 		if (checked == false) setSelect(false);
 	};
 

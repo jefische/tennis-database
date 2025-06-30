@@ -3,7 +3,7 @@ import { useState, useRef, forwardRef } from "react";
 const fData = {
 	tournament: "US Open",
 	year: 2024,
-	youtubeid: "JFwsha7u1IE",
+	youtube_id: "JFwsha7u1IE",
 	round: "1st",
 	player1: "Caroline Wozniacki",
 	player2: "Nao Hibino",
@@ -114,16 +114,16 @@ export default function VideoForm({ onFormSubmit }) {
 
 			<div className="row">
 				<div className="col">
-					<label className="form-label" htmlFor="youtubeid">
+					<label className="form-label" htmlFor="youtube_id">
 						Youtube ID
 					</label>
 					<input
 						className="form-control"
 						type="text"
-						name="youtubeid"
+						name="youtube_id"
 						required
 						placeholder="e.g. https://www.youtube.com/embed/{id}"
-						value={formData.youtubeid}
+						value={formData.youtube_id}
 						onChange={handleChange}
 					/>
 					{urlValidated ? (
