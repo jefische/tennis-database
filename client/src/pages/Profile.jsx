@@ -1,5 +1,6 @@
 import CustomVideos from "../components/CustomVideos";
 import Navbar from "../components/Navbar";
+import ModalTest from "../components/ModalTest";
 
 export default function Profile() {
 	const isProduction = import.meta.env.PROD;
@@ -16,8 +17,9 @@ export default function Profile() {
 					<main className="content-container bg-gray-custom">
 						<h1 style={{ textAlign: "center" }}>Profile page</h1>
 						<section className="player-sections d-flex justify-content-center" style={{ color: "#fff", gap: "20px" }}>
-							<CustomVideos id={myId} title="Serving Dec. 2024 - AHS" />
-							<CustomVideos id={UTRmatch} title="Snyder Doubles Match Apr. 2024" />
+							<CustomVideos url={myId} title="Serving Dec. 2024 - AHS" />
+							<CustomVideos url={UTRmatch} title="Snyder Doubles Match Apr. 2024" />
+							<ModalTest />
 						</section>
 					</main>
 				</div>
