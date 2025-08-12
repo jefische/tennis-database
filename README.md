@@ -18,7 +18,6 @@ Built to explore the full development lifecycle—from backend service design to
 - **Frontend**: React + CSS Bootstrap — mirrors modern web UI best practices and agile front-end development. Uses **Vite** for fast development and bundling.
 - **Backend**: Node.js + Express — demonstrates building scalable RESTful services and API endpoints  
 - **Database**: MongoDB — shows experience with document-based, schema-flexible databases  
-- **Architecture**: Clear separation of concerns—API layers, UI, and data persistence.
 - **RESTful Design**: Clean API structure (GET, POST, PUT, DELETE) for video resources  
 - **Lean Development**: Minimal dependencies, modular components, quick iteration ready for CI/CD pipelines  
 
@@ -27,23 +26,5 @@ Built to explore the full development lifecycle—from backend service design to
 ##  Project Structure
 
 The codebase is structured as a monorepo, with clearly separated ```client``` and ```server``` directories for frontend and backend logic.
-
-```
-client/                # React front-end
-└── src/
-    ├── components/
-    ├── pages/
-    └── services/      # API client
-
-server/                # Express backend
-└── src/
-    ├── controllers/   # Route handlers
-    ├── models/        # Mongoose schemas
-    ├── routes/        # API endpoints
-    └── services/      # Business logic and data access
-
-Dockerfile             # Container setup (if present)
-```
----
 
 View the live app here: https://tennis-database.fly.dev
