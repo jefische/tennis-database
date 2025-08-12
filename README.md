@@ -28,6 +28,7 @@ Built to explore the full development lifecycle—from backend service design to
 
 The codebase is structured as a monorepo, with clearly separated ```client``` and ```server``` directories for frontend and backend logic.
 
+```
 client/                # React front-end
 └── src/
     ├── components/
@@ -42,7 +43,7 @@ server/                # Express backend
     └── services/      # Business logic and data access
 
 Dockerfile             # Container setup (if present)
-
+```
 ---
 
 View the live app here: https://tennis-database.fly.dev
