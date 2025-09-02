@@ -1,6 +1,6 @@
-import VideoCard from "../components/VideoCard";
-import AddVideo from "../components/AddVideo";
-import Sidebar from "../components/Sidebar";
+import VideoCard from "../components/home/modals/VideoCard";
+import AddVideo from "../components/home/modals/add/AddVideo";
+import Sidebar from "../components/home/sidebar/Sidebar";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 
