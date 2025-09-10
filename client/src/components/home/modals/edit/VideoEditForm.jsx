@@ -17,8 +17,8 @@ export default function VideoEditForm({ onFormSubmit, editData }) {
 			setURLValidation(true);
 			setValidation(true);
 		} else {
-			fetch(`http://localhost:8080/api/edit`, {
-				method: "POST",
+			fetch(`http://localhost:8080/videos/edit`, {
+				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
 				},

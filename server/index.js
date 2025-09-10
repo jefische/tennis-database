@@ -39,7 +39,7 @@ TVideo.init()
 		console.error("Index creation failed:", err);
 	});
 
-app.get("/api/items", async (req, res) => {
+app.get("/videos", async (req, res) => {
 	try {
 		const items = await TVideo.find({});
 		console.log("loading videos...");
@@ -49,7 +49,7 @@ app.get("/api/items", async (req, res) => {
 	}
 });
 
-app.post("/api/add", async (req, res) => {
+app.post("/videos/add", async (req, res) => {
 	console.log("posting video data....");
 	var videoEntry = req.body;
 
@@ -90,7 +90,7 @@ app.post("/api/add", async (req, res) => {
 });
 
 // Load record to Edit
-app.get("/api/edit/:youtubeId", async (req, res) => {
+app.get("/videos/edit/:youtubeId", async (req, res) => {
 	try {
 		const theID = req.params.youtubeId.replace("youtubeid=", "");
 		const dVid = await TVideo.findOne({ youtube_id: theID });
@@ -102,7 +102,7 @@ app.get("/api/edit/:youtubeId", async (req, res) => {
 });
 
 // Edit the loaded record
-app.post("/api/edit", async (req, res) => {
+app.put("/videos/edit", async (req, res) => {
 	var videoEntry = req.body;
 	try {
 		var dVid = await TVideo.findOne({ youtube_id: videoEntry.youtube_id });
@@ -120,7 +120,7 @@ app.post("/api/edit", async (req, res) => {
 		} else {
 			console.log("Document not found");
 		}
-		res.redirect("/api/items"); // reload all videos from MongoDB
+		res.redirect("/videos"); // reload all videos from MongoDB
 	} catch (error) {
 		if (error.code === 11000) {
 			// Duplicate key error
@@ -133,7 +133,7 @@ app.post("/api/edit", async (req, res) => {
 });
 
 // Delete a record
-app.get("/api/delete/:youtubeId", async (req, res) => {
+app.get("/videos/delete/:youtubeId", async (req, res) => {
 	// var count = await TVideo.countDocuments({});
 	let theID = req.params.youtubeId.replace("youtubeid=", "");
 	var dVid = await TVideo.findOne({ youtube_id: theID });
@@ -143,7 +143,7 @@ app.get("/api/delete/:youtubeId", async (req, res) => {
 	console.log(dVid);
 	await TVideo.findOneAndDelete({ youtube_id: theID });
 
-	res.redirect("/api/items"); // reload all videos from MongoDB
+	res.redirect("/videos"); // reload all videos from MongoDB
 });
 
 // Serve React build only in production

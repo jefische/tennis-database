@@ -26,7 +26,7 @@ export default function VideoForm({ onFormSubmit }) {
 			setURLValidation(true);
 			setValidation(true);
 		} else {
-			fetch(`http://localhost:8080/api/add`, {
+			fetch(`http://localhost:8080/videos/add`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
