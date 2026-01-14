@@ -28,8 +28,36 @@ const VideoSchema = new Schema({
 	title: { type: String, required: true },
 });
 
-// Create a Model
+const DrawSchema = new Schema({
+	tournament: { type: String, required: true },
+	year: { type: Number, required: true },
+	rounds: [
+		{
+			name: String,
+			matches: [
+				{
+					player1: {
+						name: String,
+						seed: Number,
+					},
+					player2: {
+						name: String,
+						seed: Number,
+					},
+					score: {
+						player1: String,
+						player2: String,
+					},
+					winner: Number,
+				},
+			],
+		},
+	],
+});
+
+// Create Models
 let TVideo = mongoose.model("Tennis Videos", VideoSchema);
+let TDraw = mongoose.model("Tennis Draws", DrawSchema);
 
 TVideo.init()
 	.then(() => {
@@ -46,6 +74,29 @@ app.get("/videos", async (req, res) => {
 		res.json(items);
 	} catch (error) {
 		res.status(500).json({ message: "Error fetching data", error });
+	}
+});
+
+app.get("/draws", async (req, res) => {
+	try {
+		const draws = await TDraw.find({});
+		console.log("loading draws...");
+		res.json(draws);
+	} catch (error) {
+		res.status(500).json({ message: "Error fetching draws", error });
+	}
+});
+
+app.get("/draws/:id", async (req, res) => {
+	try {
+		const draw = await TDraw.findById(req.params.id);
+		if (!draw) {
+			return res.status(404).json({ message: "Draw not found" });
+		}
+		console.log("loading draw...");
+		res.json(draw);
+	} catch (error) {
+		res.status(500).json({ message: "Error fetching draw", error });
 	}
 });
 

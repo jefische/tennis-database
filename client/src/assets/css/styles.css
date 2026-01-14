@@ -33,6 +33,8 @@ select {
 	   container to the bottom, if the height is (100% - the navbar height), then the full element will fit in the viewport WITH the navbar.
 	   If the height is 100% (full viewport size), then both the content container and navbar cannot fully be visible on the screen with a fixed html height.*/
 	height: calc(100% - 64px);
+	overflow-y: auto;
+	overflow-x: hidden;
 	/* Not currently using any absolute positioning, so I don't believe we need position relative here */
 	/* position: relative; */
 }
@@ -444,4 +446,175 @@ form.add-video {
 	font-size: 50px;
 	padding: 50px 0;
 	text-align: center;
+}
+
+/* Tournament Bracket Styles ************************************************************/
+
+.draws-page-container {
+	color: #fff;
+	min-height: 100%;
+}
+
+.bracket-wrapper {
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	padding: 30px;
+	overflow-x: auto;
+}
+
+.bracket-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.bracket-header h2 {
+	font-size: 28px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+
+.bracket-container {
+	display: flex;
+	gap: 40px;
+	justify-content: center;
+	min-width: fit-content;
+	padding: 20px 0;
+}
+
+.bracket-round {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	min-width: 250px;
+}
+
+.round-label {
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 10px;
+	color: #60a5fa;
+}
+
+.matches-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	justify-content: space-around;
+	flex: 1;
+}
+
+.match-card {
+	background-color: rgba(55, 65, 81, 0.8);
+	border: 2px solid rgba(75, 85, 99, 0.6);
+	border-radius: 8px;
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+
+.match-card:hover {
+	border-color: rgba(96, 165, 250, 0.5);
+	box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+.match-card.empty {
+	background-color: rgba(55, 65, 81, 0.3);
+	border-style: dashed;
+	border-color: rgba(75, 85, 99, 0.4);
+}
+
+.match-placeholder {
+	padding: 15px;
+	text-align: center;
+	color: #9ca3af;
+	font-style: italic;
+}
+
+.player-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 15px;
+	border-bottom: 1px solid rgba(75, 85, 99, 0.4);
+	transition: background-color 0.2s ease;
+}
+
+.player-row:last-child {
+	border-bottom: none;
+}
+
+.player-row.winner {
+	background-color: rgba(34, 197, 94, 0.15);
+	font-weight: 700;
+}
+
+.player-row.loser {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.player-name {
+	flex: 1;
+	font-size: 15px;
+}
+
+.player-score {
+	font-size: 15px;
+	font-weight: 600;
+	min-width: 60px;
+	text-align: right;
+	color: #e5e7eb;
+}
+
+.draw-selector {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+.draw-selector label {
+	font-weight: 600;
+}
+
+.draw-selector select {
+	background-color: rgb(55, 65, 81);
+	color: white;
+	padding: 10px 15px;
+	border-radius: 6px;
+	border: 1px solid rgba(75, 85, 99, 0.6);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.draw-selector select:hover {
+	border-color: rgba(96, 165, 250, 0.5);
+}
+
+.draw-selector select:focus {
+	outline: none;
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+@media (max-width: 768px) {
+	.bracket-container {
+		gap: 20px;
+	}
+
+	.bracket-round {
+		min-width: 200px;
+	}
+
+	.round-label {
+		font-size: 16px;
+	}
+
+	.player-name,
+	.player-score {
+		font-size: 13px;
+	}
+
+	.draws-page-container {
+		padding: 25px 20px;
+	}
 }

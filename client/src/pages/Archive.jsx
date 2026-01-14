@@ -51,7 +51,7 @@ export function Archive() {
 
 			<div className="body-container">
 				<section className="flex bg-gray-custom" style={{ height: "100%" }}>
-					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={initFilters} />
+					<Sidebar allVideos={allVideos} setVideos={setVideos} initFilters={filterDataSorted} />
 					<main className="archives content-container px-[50px]">
 						<div className="header-container py-[50px]">
 							<h1>Welcome to the Match Archive</h1>
